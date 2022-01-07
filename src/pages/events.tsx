@@ -24,7 +24,7 @@ export default function HomePage() {
 
   return (
     <Page title="The starting point for your next project">
-      <Container style={{ marginTop: '150px' }} maxWidth={themeStretch ? false : 'lg'}>
+      <Container sx={{ mt: 25, mb: 10 }} style={{ maxWidth: '1120px' }}>
         <Typography variant="h4" sx={{ mt: 2, mb: 2 }}>
           Events
         </Typography>

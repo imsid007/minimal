@@ -9,6 +9,7 @@ import Logo from '../../components/Logo';
 import MainFooter from './MainFooter';
 import MainHeader from './MainHeader';
 import DashboardHeader from '../dashboard/header';
+import DashboardHeaderV2 from '../dashboard/header/dashboard-header';
 
 // ----------------------------------------------------------------------
 
@@ -23,7 +24,7 @@ export default function MainLayout({ children }: Props) {
   return (
     <Stack sx={{ minHeight: 1 }}>
       {/* <MainHeader /> */}
-      <DashboardHeader onOpenSidebar={false} isCollapse={true} />
+      <DashboardHeaderV2 />
 
       {children}
 

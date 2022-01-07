@@ -6,8 +6,9 @@ import { Grid, Link, Divider, Container, Typography, Stack, Button } from '@mui/
 // routes
 import { PATH_PAGE } from '../../routes/paths';
 // components
-import Logo from '../../components/Logo';
+
 import SocialsButton from '../../components/SocialsButton';
+import FooterLogo from 'src/components/logo-footer';
 
 // ----------------------------------------------------------------------
 
@@ -63,7 +64,7 @@ export default function MainFooter() {
           {/* <Grid item xs={12} sx={{ mb: 3 }}>
           </Grid> */}
           <Grid item xs={8} md={3}>
-            <Logo sx={{ mx: { xs: 'auto', md: 'inherit' } }} />
+            <FooterLogo sx={{ mx: { xs: 'auto', md: 'inherit' } }} />
             <Typography variant="body2" sx={{ mt: 3, pr: { md: 5 }, color: '#DFE3E8' }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, eget blandit non
               sollicitudin enim a.

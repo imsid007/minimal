@@ -33,7 +33,7 @@ type Props = {
 };
 
 export default function UserCard({ user }: Props) {
-  const { name, cover, position, follower, totalPost, avatarUrl, following } = user;
+  const { name, cover, avatarUrl } = user;
 
   return (
     <Card sx={{ textAlign: 'left' }}>
@@ -45,7 +45,6 @@ export default function UserCard({ user }: Props) {
             height: 62,
             zIndex: 10,
             left: 0,
-            // right: 0,
             bottom: -26,
             mx: 'auto',
             position: 'absolute',
@@ -60,7 +59,6 @@ export default function UserCard({ user }: Props) {
             height: 64,
             zIndex: 11,
             left: 40,
-            // right: 0,
             bottom: -32,
             mx: 'auto',
             position: 'absolute',
@@ -82,39 +80,38 @@ export default function UserCard({ user }: Props) {
           Chandigarh Entrepreneurs Group • Chandigarh, IN
         </Typography>
         <Stack
-          style={{ marginTop: '20px' }}
+          style={{ marginTop: '20px', padding: '0 15px' }}
           direction="row"
           flexWrap="wrap"
           justifyContent="space-between"
         >
-          <div>
-            <AvatarGroup max={5}>
-              <Avatar
-                alt="Remy Sharp"
-                src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg"
-              />
-              <Avatar
-                alt="Cindy Baker"
-                src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_5.jpg"
-              />
-              <Avatar
-                alt="Agnes Walker"
-                src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_6.jpg"
-              />
-              <Avatar
-                alt="Trevor Henderson"
-                src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_7.jpg"
-              />
-              <Avatar
-                alt="Trevor Henderson"
-                src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_8.jpg"
-              />
-              <Avatar
-                alt="Trevor Henderson"
-                src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_9.jpg"
-              />
-            </AvatarGroup>
-          </div>
+          <AvatarGroup max={5} spacing="small">
+            <Avatar
+              alt="Remy Sharp"
+              src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg"
+            />
+            <Avatar
+              alt="Cindy Baker"
+              src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_5.jpg"
+            />
+            <Avatar
+              alt="Agnes Walker"
+              src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_6.jpg"
+            />
+            <Avatar
+              alt="Trevor Henderson"
+              src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_7.jpg"
+            />
+            <Avatar
+              alt="Trevor Henderson"
+              src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_8.jpg"
+            />
+            <Avatar
+              alt="Trevor Henderson"
+              src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_9.jpg"
+            />
+          </AvatarGroup>
+
           <div>
             <Stack
               style={{ marginTop: '20px' }}
@@ -123,20 +120,21 @@ export default function UserCard({ user }: Props) {
               justifyContent="space-between"
             >
               <TextIconLabel
+                sx={{ mr: 2 }}
                 icon={
-                  <SvgIcon color="action">
+                  <SvgIcon color="action" style={{ width: '15px' }}>
                     <Iconify icon={'fa-solid:share-alt'} width={10} height={24} />
                   </SvgIcon>
                 }
-                value={<Typography>20</Typography>}
+                value={<Typography sx={{ ml: 1 }}>20</Typography>}
               />
               <TextIconLabel
                 icon={
-                  <SvgIcon color="action">
-                    <Iconify icon={'bytesize:star'} width={15} height={15} />
+                  <SvgIcon color="action" style={{ width: '15px' }}>
+                    <Iconify sx={{ mr: '2' }} icon={'bytesize:star'} width={15} height={15} />
                   </SvgIcon>
                 }
-                value={<Typography>45</Typography>}
+                value={<Typography sx={{ ml: 1 }}>45</Typography>}
               />
             </Stack>
           </div>
