@@ -44,22 +44,22 @@ export default function SocialsButton({
       path: links.facebook || '#facebook-link',
     },
     {
-      name: 'Instagram',
-      icon: 'ant-design:instagram-filled',
-      socialColor: '#E02D69',
-      path: links.instagram || '#instagram-link',
-    },
-    {
-      name: 'Linkedin',
-      icon: 'eva:linkedin-fill',
-      socialColor: '#007EBB',
-      path: links.linkedin || '#linkedin-link',
-    },
-    {
       name: 'Twitter',
       icon: 'eva:twitter-fill',
       socialColor: '#00AAEC',
       path: links.twitter || '#twitter-link',
+    },
+    {
+      name: 'GooglePlus',
+      icon: 'vaadin:google-plus',
+      socialColor: '#007EBB',
+      path: links.linkedin || '#linkedin-link',
+    },
+    {
+      name: 'Instagram',
+      icon: 'ant-design:instagram-filled',
+      socialColor: '#E02D69',
+      path: links.instagram || '#instagram-link',
     },
   ];
 
@@ -83,7 +83,16 @@ export default function SocialsButton({
                 }}
                 {...other}
               >
-                <Iconify icon={icon} sx={{ width: 20, height: 20 }} />
+                <Iconify
+                  icon={icon}
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    backgroundColor: 'rgba(28, 62, 59, 1)',
+                    padding: '8px',
+                    borderRadius: '50%',
+                  }}
+                />
               </IconButton>
             </Tooltip>
           </Link>

@@ -1,15 +1,18 @@
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Avatar, Typography, Stack, AvatarGroup } from '@mui/material';
+import { Box, Card, Avatar, Typography, Stack, AvatarGroup, SvgIcon } from '@mui/material';
 // utils
 import cssStyles from '../../../../utils/cssStyles';
-import { fShortenNumber } from '../../../../utils/formatNumber';
+
 // @types
 import { UserData } from '../../../../@types/user';
 // components
 import Image from '../../../../components/Image';
 
 import SvgIconStyle from '../../../../components/SvgIconStyle';
+import TextIconLabel from 'src/components/TextIconLabel';
+
+import Iconify from 'src/components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -90,7 +93,6 @@ export default function UserCard({ user }: Props) {
                 alt="Remy Sharp"
                 src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg"
               />
-              <Avatar color="info">OP</Avatar>
               <Avatar
                 alt="Cindy Baker"
                 src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_5.jpg"
@@ -113,7 +115,31 @@ export default function UserCard({ user }: Props) {
               />
             </AvatarGroup>
           </div>
-          <div>hello</div>
+          <div>
+            <Stack
+              style={{ marginTop: '20px' }}
+              direction="row"
+              flexWrap="wrap"
+              justifyContent="space-between"
+            >
+              <TextIconLabel
+                icon={
+                  <SvgIcon color="action">
+                    <Iconify icon={'fa-solid:share-alt'} width={10} height={24} />
+                  </SvgIcon>
+                }
+                value={<Typography>20</Typography>}
+              />
+              <TextIconLabel
+                icon={
+                  <SvgIcon color="action">
+                    <Iconify icon={'bytesize:star'} width={15} height={15} />
+                  </SvgIcon>
+                }
+                value={<Typography>45</Typography>}
+              />
+            </Stack>
+          </div>
         </Stack>
       </Box>
     </Card>

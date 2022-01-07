@@ -2,7 +2,7 @@
 import NextLink from 'next/link';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Grid, Link, Divider, Container, Typography, Stack } from '@mui/material';
+import { Grid, Link, Divider, Container, Typography, Stack, Button } from '@mui/material';
 // routes
 import { PATH_PAGE } from '../../routes/paths';
 // components
@@ -44,7 +44,8 @@ const LINKS = [
 
 const RootStyle = styled('div')(({ theme }) => ({
   position: 'relative',
-  backgroundColor: theme.palette.background.default,
+  // backgroundColor: theme.palette.background.default,
+  backgroundColor: '#212B36',
 }));
 
 // ----------------------------------------------------------------------
@@ -59,14 +60,23 @@ export default function MainFooter() {
           justifyContent={{ xs: 'center', md: 'space-between' }}
           sx={{ textAlign: { xs: 'center', md: 'left' } }}
         >
-          <Grid item xs={12} sx={{ mb: 3 }}>
-            <Logo sx={{ mx: { xs: 'auto', md: 'inherit' } }} />
-          </Grid>
+          {/* <Grid item xs={12} sx={{ mb: 3 }}>
+          </Grid> */}
           <Grid item xs={8} md={3}>
-            <Typography variant="body2" sx={{ pr: { md: 5 } }}>
+            <Logo sx={{ mx: { xs: 'auto', md: 'inherit' } }} />
+            <Typography variant="body2" sx={{ mt: 3, pr: { md: 5 }, color: '#DFE3E8' }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, eget blandit non
               sollicitudin enim a.
             </Typography>
+            <Button
+              style={{ marginTop: '20px' }}
+              variant="contained"
+              target="_blank"
+              rel="noopener"
+              href="https://material-ui.com/store/items/minimal-dashboard/"
+            >
+              Get Started
+            </Button>
 
             <Stack
               direction="row"
@@ -85,12 +95,16 @@ export default function MainFooter() {
             >
               {LINKS.map((list) => (
                 <Stack key={list.headline} spacing={2}>
-                  <Typography component="p" variant="overline">
+                  <Typography component="p" variant="overline" sx={{ color: '#DFE3E8' }}>
                     {list.headline}
                   </Typography>
                   {list.children.map((link) => (
                     <NextLink key={link.name} href={link.href} passHref>
-                      <Link color="inherit" variant="body2" sx={{ display: 'block' }}>
+                      <Link
+                        color="inherit"
+                        variant="body2"
+                        sx={{ display: 'block', color: '#DFE3E8' }}
+                      >
                         {link.name}
                       </Link>
                     </NextLink>
@@ -105,10 +119,13 @@ export default function MainFooter() {
           component="p"
           variant="body2"
           sx={{
-            mt: 10,
+            mt: 5,
             pb: 5,
             fontSize: 13,
+            color: '#DFE3E8',
             textAlign: { xs: 'center', md: 'center' },
+            borderTop: '1px solid #637381',
+            paddingTop: '20px',
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, eget blandit non

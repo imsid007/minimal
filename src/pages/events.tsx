@@ -4,10 +4,11 @@ import { styled } from '@mui/material/styles';
 import Layout from '../layouts';
 // components
 import Page from '../components/Page';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { _userCards } from 'src/_mock';
 import { UserCard } from 'src/sections/@dashboard/user/cards';
 import useSettings from 'src/hooks/useSettings';
+
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -23,7 +24,10 @@ export default function HomePage() {
 
   return (
     <Page title="The starting point for your next project">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
+      <Container style={{ marginTop: '150px' }} maxWidth={themeStretch ? false : 'lg'}>
+        <Typography variant="h4" sx={{ mt: 2, mb: 2 }}>
+          Events
+        </Typography>
         <Box
           sx={{
             display: 'grid',

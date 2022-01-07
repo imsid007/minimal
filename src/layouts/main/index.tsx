@@ -8,6 +8,7 @@ import Logo from '../../components/Logo';
 //
 import MainFooter from './MainFooter';
 import MainHeader from './MainHeader';
+import DashboardHeader from '../dashboard/header';
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +22,8 @@ export default function MainLayout({ children }: Props) {
 
   return (
     <Stack sx={{ minHeight: 1 }}>
-      <MainHeader />
+      {/* <MainHeader /> */}
+      <DashboardHeader onOpenSidebar={false} isCollapse={true} />
 
       {children}
 
