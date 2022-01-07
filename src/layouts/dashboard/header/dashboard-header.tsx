@@ -1,6 +1,16 @@
 // @mui
 import { styled } from '@mui/material/styles';
-import { Button, Stack, AppBar, Toolbar, Tabs, Tab, TextField, Input } from '@mui/material';
+import {
+  Button,
+  Stack,
+  AppBar,
+  Toolbar,
+  Tabs,
+  Tab,
+  TextField,
+  Input,
+  InputAdornment,
+} from '@mui/material';
 // hooks
 import useOffSetTop from '../../../hooks/useOffSetTop';
 import useResponsive from '../../../hooks/useResponsive';
@@ -10,6 +20,8 @@ import cssStyles from '../../../utils/cssStyles';
 import { HEADER, NAVBAR } from '../../../config';
 // components
 import Logo from '../../../components/Logo';
+
+import Iconify from 'src/components/Iconify';
 
 import AccountPopover from './AccountPopover';
 
@@ -64,6 +76,13 @@ type Props = {
   verticalLayout?: boolean;
 };
 
+const category = [
+  'Select category',
+  'Carrier & Business',
+  'Carrier & Business',
+  'Carrier & Business',
+];
+
 export default function DashboardHeaderV2({
   onOpenSidebar,
   isCollapse = true,
@@ -108,21 +127,19 @@ export default function DashboardHeaderV2({
             style={{ height: '100%' }}
             spacing={{ xs: 0.5, sm: 1.5 }}
           >
-            <Input />
-            <TabsWrapperStyle>
-              <Tabs
-                value={currentTab}
-                scrollButtons="auto"
-                variant="scrollable"
-                allowScrollButtonsMobile
-                onChange={(e, value) => handleChangeTab(value)}
-                style={{ height: '100%', display: 'flex' }}
-              >
-                {['Evenets', 'Groups', 'Club Management'].map((tab) => (
-                  <Tab disableRipple key={tab} value={tab} label={tab} />
-                ))}
-              </Tabs>
-            </TabsWrapperStyle>
+            <TextField
+              fullWidth
+              variant="filled"
+              placeholder="search"
+              style={{ borderRadius: '30px', overflow: 'hidden' }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Iconify icon="bx:bx-search" width={24} height={24} />
+                  </InputAdornment>
+                ),
+              }}
+            />
           </Stack>
           <div>
             <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
@@ -143,13 +160,41 @@ export default function DashboardHeaderV2({
       >
         <Stack direction="row" justifyContent="center" style={{ width: '100%' }}>
           <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
-            <TextField variant="standard" fullWidth label="Inactive" />
+            <TextField
+              fullWidth
+              label=" "
+              variant="standard"
+              placeholder="search"
+              style={{ borderRadius: '30px', overflow: 'hidden' }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Iconify icon="bx:bx-search" width={24} height={24} />
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
           <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
             <TextField variant="standard" fullWidth label="Inactive" />
           </div>
           <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
-            <TextField variant="standard" fullWidth label="Inactive" />
+            <TextField
+              select
+              fullWidth
+              variant="standard"
+              size="small"
+              //   value={currency}
+              label=" "
+              SelectProps={{ native: true }}
+              //   onChange={handleChangeCurrency}
+            >
+              {category.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </TextField>
           </div>
           <div style={{ padding: '0 3%' }}>
             <Button
