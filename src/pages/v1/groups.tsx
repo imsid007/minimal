@@ -1,19 +1,21 @@
 // @mui
 import { styled } from '@mui/material/styles';
 // layouts
-import Layout from '../layouts';
+import Layout from '../../layouts';
 // components
-import Page from '../components/Page';
+import Page from '../../components/Page';
 import { Box, Container, Typography } from '@mui/material';
 import { _userCards } from 'src/_mock';
 import { UserCard } from 'src/sections/@dashboard/user/cards';
 import useSettings from 'src/hooks/useSettings';
+import { getgroups } from 'node:process';
+import TabsHeader from 'src/components/dashbaord/tabs-header';
 
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 
-HomePage.getLayout = function getLayout(page: React.ReactElement) {
+getgroups.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout variant="main" filter={true}>
       {page}
@@ -23,15 +25,13 @@ HomePage.getLayout = function getLayout(page: React.ReactElement) {
 
 // ----------------------------------------------------------------------
 
-export default function HomePage() {
+export default function Groups() {
   const { themeStretch } = useSettings();
 
   return (
     <Page title="The starting point for your next project">
       <Container sx={{ mt: 25, mb: 10 }} style={{ maxWidth: '1120px' }}>
-        <Typography variant="h4" sx={{ mt: 2, mb: 2 }}>
-          Events
-        </Typography>
+        <TabsHeader heading="Groups" />
         <Box
           sx={{
             display: 'grid',

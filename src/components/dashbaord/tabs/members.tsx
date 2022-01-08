@@ -6,6 +6,7 @@ import { Follower } from 'src/@types/user';
 // components
 
 import Iconify from 'src/components/Iconify';
+import TabsHeader from '../tabs-header';
 
 // ----------------------------------------------------------------------
 
@@ -16,9 +17,7 @@ type Props = {
 export default function MembersList({ followers }: Props) {
   return (
     <Box sx={{ mt: 5 }}>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        Followers
-      </Typography>
+      <TabsHeader heading="Member" />
 
       <Grid container spacing={3}>
         {followers.map((follower) => (

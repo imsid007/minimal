@@ -3,7 +3,7 @@ import { useEffect, useCallback, useState } from 'react';
 // next
 import NextLink from 'next/link';
 // @mui
-import { Grid, Button, Container, Stack } from '@mui/material';
+import { Grid, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
 // hooks
 import useSettings from '../../../hooks/useSettings';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
@@ -23,6 +23,8 @@ import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 // sections
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/@dashboard/blog';
 import EventCard from '../event-card';
+import TabsHeader from '../tabs-header';
+import TextIconLabel from 'src/components/TextIconLabel';
 
 // ----------------------------------------------------------------------
 
@@ -87,30 +89,37 @@ export default function EventList() {
   };
 
   return (
-    <Page title="Blog: Posts">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Blog"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Blog', href: PATH_DASHBOARD.blog.root },
-            { name: 'Posts' },
-          ]}
-          action={
-            <NextLink href={PATH_DASHBOARD.blog.newPost} passHref>
-              <Button variant="contained" startIcon={<Iconify icon={'eva:plus-fill'} />}>
-                New Post
-              </Button>
-            </NextLink>
-          }
-        />
-
+    <Page title="Blog: Posts" style={{ paddingBottom: '100px' }}>
+      <TabsHeader
+        heading="Upcomming Events"
+        action={
+          <TextIconLabel
+            sx={{ mt: 2 }}
+            icon={
+              <SvgIcon color="action" style={{ width: '25px' }}>
+                <Iconify
+                  sx={{ mr: '2', color: 'rgba(0, 171, 85, 1)' }}
+                  icon={'ant-design:plus-circle-outlined'}
+                  width={15}
+                  height={15}
+                />
+              </SvgIcon>
+            }
+            value={
+              <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
+                Create new Event
+              </Typography>
+            }
+          />
+        }
+      />
+      <div>
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
           <BlogPostsSearch />
         </Stack>
 
         <Grid container spacing={3}>
-          {(!posts.length ? [...Array(12)] : sortedPosts).map((post, index) =>
+          {(!posts.length ? [...Array(5)] : sortedPosts).map((post, index) =>
             post ? (
               <Grid key={post.id} item xs={12} sm={6} md={6}>
                 {/* <BlogPostCard post={post} index={index} /> */}
@@ -121,7 +130,7 @@ export default function EventList() {
             )
           )}
         </Grid>
-      </Container>
+      </div>
     </Page>
   );
 }

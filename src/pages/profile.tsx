@@ -31,6 +31,7 @@ import EventList from 'src/components/dashbaord/tabs/evets';
 import { ChatRoom } from 'src/sections/@dashboard/chat';
 import Chat from './dashboard/chat/[conversationKey]';
 import About from 'src/components/dashbaord/tabs/about';
+import TabsHeader from 'src/components/dashbaord/tabs-header';
 
 // ----------------------------------------------------------------------
 
@@ -124,7 +125,8 @@ export default function UserProfile() {
 
   return (
     <Page title="User: Profile">
-      <Container sx={{ mt: 25 }} maxWidth={themeStretch ? false : 'lg'}>
+      <Container sx={{ mt: 15 }} maxWidth={themeStretch ? false : 'lg'}>
+        <TabsHeader heading="Profile" />
         <Card
           sx={{
             mb: 3,

@@ -15,11 +15,13 @@ import React from 'react';
 import Page from 'src/components/Page';
 import TextIconLabel from 'src/components/TextIconLabel';
 import Iconify from 'src/components/Iconify';
+import TabsHeader from '../tabs-header';
 
 const about = [1, 2, 3];
 export default function About() {
   return (
     <div>
+      <TabsHeader heading="About this club" />
       <Card style={{ padding: ' 20px', marginBottom: '20px' }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Button

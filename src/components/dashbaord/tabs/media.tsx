@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, IconButton, Typography, CardContent } from '@mui/material';
+import { Box, Card, IconButton, Typography, CardContent, SvgIcon } from '@mui/material';
 // utils
 
 import { fDate } from 'src/utils/formatTime';
@@ -12,6 +12,8 @@ import { Gallery } from 'src/@types/user';
 import Image from 'src/components/Image';
 import Iconify from 'src/components/Iconify';
 import LightboxModal from 'src/components/LightboxModal';
+import TextIconLabel from 'src/components/TextIconLabel';
+import TabsHeader from '../tabs-header';
 
 // ----------------------------------------------------------------------
 
@@ -45,9 +47,29 @@ export default function Media({ gallery }: Props) {
   };
   return (
     <Box sx={{ mt: 5 }}>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        Gallery
-      </Typography>
+      <TabsHeader
+        heading="Media"
+        action={
+          <TextIconLabel
+            sx={{ mt: 2 }}
+            icon={
+              <SvgIcon color="action" style={{ width: '25px' }}>
+                <Iconify
+                  sx={{ mr: '2', color: 'rgba(0, 171, 85, 1)' }}
+                  icon={'ant-design:plus-circle-outlined'}
+                  width={15}
+                  height={15}
+                />
+              </SvgIcon>
+            }
+            value={
+              <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
+                Create Album
+              </Typography>
+            }
+          />
+        }
+      />
 
       <Card sx={{ p: 3 }}>
         <Box
