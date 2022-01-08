@@ -24,6 +24,11 @@ import {
   ProfileGallery,
   ProfileFollowers,
 } from 'src/sections/@dashboard/user/profile';
+import News from 'src/components/dashbaord/tabs/news';
+import Media from 'src/components/dashbaord/tabs/media';
+import MembersList from 'src/components/dashbaord/tabs/members';
+import EventList from 'src/components/dashbaord/tabs/evets';
+import { ChatRoom } from 'src/sections/@dashboard/chat';
 
 // ----------------------------------------------------------------------
 
@@ -75,7 +80,7 @@ export default function UserProfile() {
     {
       value: 'Events',
       icon: <Iconify icon={'bi:calendar-event-fill'} width={20} height={20} />,
-      component: <ProfileFollowers followers={_userFollowers} />,
+      component: <EventList />,
     },
     // {
     //   value: 'News',
@@ -91,22 +96,22 @@ export default function UserProfile() {
     {
       value: 'News',
       icon: <Iconify icon={'ion:newspaper-sharp'} width={20} height={20} />,
-      component: <Profile myProfile={_userAbout} posts={_userFeeds} />,
+      component: <News myProfile={_userAbout} posts={_userFeeds} />,
     },
     {
       value: 'Media',
       icon: <Iconify icon={'foundation:photo'} width={20} height={20} />,
-      component: <ProfileGallery gallery={_userGallery} />,
+      component: <Media gallery={_userGallery} />,
     },
     {
       value: 'Discussion',
       icon: <Iconify icon={'healthicons:group-discussion-meetingx3'} width={20} height={20} />,
-      component: <ProfileGallery gallery={_userGallery} />,
+      component: <ChatRoom />,
     },
     {
       value: 'Members',
       icon: <Iconify icon={'mdi:account-group'} width={20} height={20} />,
-      component: <ProfileFollowers followers={_userFollowers} />,
+      component: <MembersList followers={_userFollowers} />,
     },
     {
       value: 'More',
