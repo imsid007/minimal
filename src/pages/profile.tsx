@@ -29,6 +29,8 @@ import Media from 'src/components/dashbaord/tabs/media';
 import MembersList from 'src/components/dashbaord/tabs/members';
 import EventList from 'src/components/dashbaord/tabs/evets';
 import { ChatRoom } from 'src/sections/@dashboard/chat';
+import Chat from './dashboard/chat/[conversationKey]';
+import About from 'src/components/dashbaord/tabs/about';
 
 // ----------------------------------------------------------------------
 
@@ -60,7 +62,7 @@ export default function UserProfile() {
   const { themeStretch } = useSettings();
   const { user } = useAuth();
 
-  const [currentTab, setCurrentTab] = useState('profile');
+  const [currentTab, setCurrentTab] = useState('About');
   const [findFriends, setFindFriends] = useState('');
 
   const handleChangeTab = (newValue: string) => {
@@ -75,7 +77,7 @@ export default function UserProfile() {
     {
       value: 'About',
       icon: <Iconify icon={'fa-solid:info-circle'} width={20} height={20} />,
-      component: <Profile myProfile={_userAbout} posts={_userFeeds} />,
+      component: <About />,
     },
     {
       value: 'Events',
@@ -106,7 +108,7 @@ export default function UserProfile() {
     {
       value: 'Discussion',
       icon: <Iconify icon={'healthicons:group-discussion-meetingx3'} width={20} height={20} />,
-      component: <ChatRoom />,
+      component: <Chat />,
     },
     {
       value: 'Members',
