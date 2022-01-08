@@ -11,15 +11,16 @@ import LogoOnlyLayout from './LogoOnlyLayout';
 type Props = {
   children: ReactNode;
   variant?: 'main' | 'dashboard' | 'logoOnly';
+  filter?: boolean;
 };
 
-export default function Layout({ variant = 'dashboard', children }: Props) {
+export default function Layout({ variant = 'dashboard', filter = false, children }: Props) {
   if (variant === 'logoOnly') {
     return <LogoOnlyLayout> {children} </LogoOnlyLayout>;
   }
 
   if (variant === 'main') {
-    return <MainLayout>{children}</MainLayout>;
+    return <MainLayout filter={filter}>{children}</MainLayout>;
   }
 
   return (

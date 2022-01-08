@@ -15,16 +15,17 @@ import DashboardHeaderV2 from '../dashboard/header/dashboard-header';
 
 type Props = {
   children: ReactNode;
+  filter: boolean;
 };
 
-export default function MainLayout({ children }: Props) {
+export default function MainLayout({ children, filter }: Props) {
   const { pathname } = useRouter();
   const isHome = pathname === '/';
 
   return (
     <Stack sx={{ minHeight: 1 }}>
       {/* <MainHeader /> */}
-      <DashboardHeaderV2 />
+      <DashboardHeaderV2 filter={filter} />
 
       {children}
 

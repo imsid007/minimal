@@ -74,6 +74,7 @@ type Props = {
   onOpenSidebar?: VoidFunction;
   isCollapse?: boolean;
   verticalLayout?: boolean;
+  filter?: boolean;
 };
 
 const category = [
@@ -87,6 +88,7 @@ export default function DashboardHeaderV2({
   onOpenSidebar,
   isCollapse = true,
   verticalLayout = false,
+  filter = false,
 }: Props) {
   const isOffset = useOffSetTop(HEADER.DASHBOARD_DESKTOP_HEIGHT) && !verticalLayout;
 
@@ -151,64 +153,66 @@ export default function DashboardHeaderV2({
           </div>
         </Stack>
       </Toolbar>
-      <Toolbar
-        sx={{
-          minHeight: '100% !important',
-          //   px: { lg: 5 },
-        }}
-        style={{ padding: ' 0 10%', width: '100%', height: '100%', backgroundColor: '#ffffffcc' }}
-      >
-        <Stack direction="row" justifyContent="center" style={{ width: '100%' }}>
-          <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
-            <TextField
-              fullWidth
-              label=" "
-              variant="standard"
-              placeholder="search"
-              style={{ borderRadius: '30px', overflow: 'hidden' }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Iconify icon="bx:bx-search" width={24} height={24} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
-            <TextField variant="standard" fullWidth label="Inactive" />
-          </div>
-          <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
-            <TextField
-              select
-              fullWidth
-              variant="standard"
-              size="small"
-              //   value={currency}
-              label=" "
-              SelectProps={{ native: true }}
-              //   onChange={handleChangeCurrency}
-            >
-              {category.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </TextField>
-          </div>
-          <div style={{ padding: '0 3%' }}>
-            <Button
-              style={{ marginTop: '20px' }}
-              variant="contained"
-              target="_blank"
-              rel="noopener"
-              href="https://material-ui.com/store/items/minimal-dashboard/"
-            >
-              Get Started
-            </Button>
-          </div>
-        </Stack>
-      </Toolbar>
+      {filter ? (
+        <Toolbar
+          sx={{
+            minHeight: '100% !important',
+            //   px: { lg: 5 },
+          }}
+          style={{ padding: ' 0 10%', width: '100%', height: '100%', backgroundColor: '#ffffffcc' }}
+        >
+          <Stack direction="row" justifyContent="center" style={{ width: '100%' }}>
+            <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
+              <TextField
+                fullWidth
+                label=" "
+                variant="standard"
+                placeholder="search"
+                style={{ borderRadius: '30px', overflow: 'hidden' }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Iconify icon="bx:bx-search" width={24} height={24} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
+              <TextField variant="standard" fullWidth label="Inactive" />
+            </div>
+            <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
+              <TextField
+                select
+                fullWidth
+                variant="standard"
+                size="small"
+                //   value={currency}
+                label=" "
+                SelectProps={{ native: true }}
+                //   onChange={handleChangeCurrency}
+              >
+                {category.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </TextField>
+            </div>
+            <div style={{ padding: '0 3%' }}>
+              <Button
+                style={{ marginTop: '20px' }}
+                variant="contained"
+                target="_blank"
+                rel="noopener"
+                href="https://material-ui.com/store/items/minimal-dashboard/"
+              >
+                Get Started
+              </Button>
+            </div>
+          </Stack>
+        </Toolbar>
+      ) : null}
     </RootStyle>
   );
 }

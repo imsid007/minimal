@@ -14,7 +14,11 @@ import useSettings from 'src/hooks/useSettings';
 // ----------------------------------------------------------------------
 
 HomePage.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout variant="main">{page}</Layout>;
+  return (
+    <Layout variant="main" filter={true}>
+      {page}
+    </Layout>
+  );
 };
 
 // ----------------------------------------------------------------------
