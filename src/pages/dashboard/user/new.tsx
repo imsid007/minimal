@@ -1,5 +1,5 @@
 // @mui
-import { Container } from '@mui/material';
+import { Container, Drawer } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks
@@ -36,6 +36,9 @@ export default function UserCreate() {
         />
         <UserNewForm />
       </Container>
+      <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+        {list(anchor)}
+      </Drawer>
     </Page>
   );
 }
