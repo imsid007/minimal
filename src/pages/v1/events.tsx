@@ -16,7 +16,7 @@ import TabsHeader from 'src/components/dashbaord/tabs-header';
 
 HomePage.getLayout = function getLayout(page: React.ReactElement) {
   return (
-    <Layout variant="main" filter={true}>
+    <Layout tab={1} variant="main" filter={true}>
       {page}
     </Layout>
   );

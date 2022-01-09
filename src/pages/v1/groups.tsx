@@ -8,16 +8,15 @@ import { Box, Container, Typography } from '@mui/material';
 import { _userCards } from 'src/_mock';
 import { UserCard } from 'src/sections/@dashboard/user/cards';
 import useSettings from 'src/hooks/useSettings';
-import { getgroups } from 'node:process';
 import TabsHeader from 'src/components/dashbaord/tabs-header';
 
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
 
-getgroups.getLayout = function getLayout(page: React.ReactElement) {
+Groups.getLayout = function getLayout(page: React.ReactElement) {
   return (
-    <Layout variant="main" filter={true}>
+    <Layout tab={2} variant="main" filter={true}>
       {page}
     </Layout>
   );
