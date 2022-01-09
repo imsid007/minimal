@@ -34,16 +34,16 @@ UserAccount.getLayout = function getLayout(page: React.ReactElement) {
 export default function UserAccount() {
   const { themeStretch } = useSettings();
 
-  const [currentTab, setCurrentTab] = useState('general');
+  const [currentTab, setCurrentTab] = useState('General');
 
   const ACCOUNT_TABS = [
     {
-      value: 'general',
+      value: 'General',
       icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
       component: <AccountGeneral />,
     },
     {
-      value: 'billing',
+      value: 'Billing',
       icon: <Iconify icon={'ic:round-receipt'} width={20} height={20} />,
       component: (
         <AccountBilling
@@ -54,17 +54,17 @@ export default function UserAccount() {
       ),
     },
     {
-      value: 'notifications',
+      value: 'Notifications',
       icon: <Iconify icon={'eva:bell-fill'} width={20} height={20} />,
       component: <AccountNotifications />,
     },
     {
-      value: 'social_links',
+      value: 'SocialLinks',
       icon: <Iconify icon={'eva:share-fill'} width={20} height={20} />,
       component: <AccountSocialLinks myProfile={_userAbout} />,
     },
     {
-      value: 'change_password',
+      value: 'ChangePassword',
       icon: <Iconify icon={'ic:round-vpn-key'} width={20} height={20} />,
       component: <AccountChangePassword />,
     },

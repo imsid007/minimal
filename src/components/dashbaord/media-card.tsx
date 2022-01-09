@@ -22,7 +22,7 @@ const IconStyle = styled(Iconify)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 interface Props {
-  iSseeAll?: boolean;
+  isSeeAll?: boolean;
   cardHeader: string;
 }
 

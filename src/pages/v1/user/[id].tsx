@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Tab, Box, Card, Tabs, Container } from '@mui/material';
 // routes
+
 import { PATH_DASHBOARD } from 'src/routes/paths';
 // hooks
 import useAuth from 'src/hooks/useAuth';
@@ -17,16 +18,21 @@ import Page from 'src/components/Page';
 import Iconify from 'src/components/Iconify';
 import HeaderBreadcrumbs from 'src/components/HeaderBreadcrumbs';
 // sections
-import { ProfileCover, ProfileGallery } from 'src/sections/@dashboard/user/profile';
+import {
+  Profile,
+  ProfileCover,
+  ProfileFriends,
+  ProfileGallery,
+  ProfileFollowers,
+} from 'src/sections/@dashboard/user/profile';
 import News from 'src/components/dashbaord/tabs/news';
 import Media from 'src/components/dashbaord/tabs/media';
 import MembersList from 'src/components/dashbaord/tabs/members';
 import EventList from 'src/components/dashbaord/tabs/evets';
 import { ChatRoom } from 'src/sections/@dashboard/chat';
-import Chat from './dashboard/chat/[conversationKey]';
+import Chat from 'src/pages/dashboard/chat/new';
 import About from 'src/components/dashbaord/tabs/about';
 import TabsHeader from 'src/components/dashbaord/tabs-header';
-import Discussion from 'src/components/dashbaord/tabs/discussion';
 
 // ----------------------------------------------------------------------
 
@@ -104,7 +110,7 @@ export default function UserProfile() {
     {
       value: 'Discussion',
       icon: <Iconify icon={'healthicons:group-discussion-meetingx3'} width={20} height={20} />,
-      component: <Discussion />,
+      component: <Chat />,
     },
     {
       value: 'Members',

@@ -25,6 +25,7 @@ import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/
 import EventCard from '../event-card';
 import TabsHeader from '../tabs-header';
 import TextIconLabel from 'src/components/TextIconLabel';
+import CreateEventDrawer from '../siders/create-event';
 
 // ----------------------------------------------------------------------
 
@@ -56,6 +57,8 @@ const applySort = (posts: Post[], sortBy: string) => {
 };
 
 export default function EventList() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const { themeStretch } = useSettings();
 
   const isMountedRef = useIsMountedRef();
@@ -106,9 +109,11 @@ export default function EventList() {
               </SvgIcon>
             }
             value={
-              <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
-                Create new Event
-              </Typography>
+              <div onClick={() => setIsDrawerOpen(true)}>
+                <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
+                  Create new Event
+                </Typography>
+              </div>
             }
           />
         }
@@ -130,6 +135,7 @@ export default function EventList() {
             )
           )}
         </Grid>
+        <CreateEventDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
       </div>
     </Page>
   );

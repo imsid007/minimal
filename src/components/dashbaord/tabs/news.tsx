@@ -83,7 +83,7 @@ export default function News({ myProfile, posts }: Props) {
             {/* <ProfileFollowInfo profile={myProfile} /> */}
             <ProfileAbout profile={myProfile} />
             <Card>
-              <MediaCard cardHeader="social" isSeeAll={true} />
+              <MediaCard cardHeader="Recent media" isSeeAll={true} />
             </Card>
           </Stack>
         </Grid>
