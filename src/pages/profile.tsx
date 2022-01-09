@@ -2,7 +2,18 @@ import { capitalCase } from 'change-case';
 import { useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Tab, Box, Card, Tabs, Container } from '@mui/material';
+import {
+  Tab,
+  Box,
+  Card,
+  Tabs,
+  Container,
+  Button,
+  Stack,
+  AvatarGroup,
+  Avatar,
+  Typography,
+} from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from 'src/routes/paths';
 // hooks
@@ -129,6 +140,81 @@ export default function UserProfile() {
             position: 'relative',
           }}
         >
+          <Button
+            style={{ position: 'absolute', zIndex: '100', right: 30, top: 20 }}
+            variant="contained"
+            startIcon={<Iconify icon={'clarity:edit-solid'} width={20} height={20} />}
+          >
+            Edit profile
+          </Button>
+          <Stack
+            direction="row"
+            style={{ position: 'absolute', zIndex: '100', right: 30, bottom: 50 }}
+          >
+            <div>
+              <AvatarGroup max={3} spacing="small">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg"
+                />
+                <Avatar
+                  alt="Cindy Baker"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_5.jpg"
+                />
+                <Avatar
+                  alt="Agnes Walker"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_6.jpg"
+                />
+                <Avatar
+                  alt="Trevor Henderson"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_7.jpg"
+                />
+                <Avatar
+                  alt="Trevor Henderson"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_8.jpg"
+                />
+                <Avatar
+                  alt="Trevor Henderson"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_9.jpg"
+                />
+              </AvatarGroup>
+              <Typography varient="body2" sx={{ color: '#fff', mt: 1 }}>
+                Follower
+              </Typography>
+            </div>
+            <div style={{ marginLeft: '40px' }}>
+              <AvatarGroup max={3} spacing="small">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg"
+                />
+                <Avatar
+                  alt="Cindy Baker"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_5.jpg"
+                />
+                <Avatar
+                  alt="Agnes Walker"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_6.jpg"
+                />
+                <Avatar
+                  alt="Trevor Henderson"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_7.jpg"
+                />
+                <Avatar
+                  alt="Trevor Henderson"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_8.jpg"
+                />
+                <Avatar
+                  alt="Trevor Henderson"
+                  src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_9.jpg"
+                />
+              </AvatarGroup>
+              <Typography varient="body2" sx={{ color: '#fff', mt: 1 }}>
+                Following
+              </Typography>
+            </div>
+          </Stack>
+
           <ProfileCover myProfile={_userAbout} />
 
           <TabsWrapperStyle>

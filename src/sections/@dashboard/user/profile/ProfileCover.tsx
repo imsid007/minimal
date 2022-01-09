@@ -63,6 +63,7 @@ export default function ProfileCover({ myProfile }: Props) {
             height: { xs: 80, md: 128 },
           }}
         />
+
         <Box
           sx={{
             ml: { md: 3 },
@@ -72,7 +73,7 @@ export default function ProfileCover({ myProfile }: Props) {
           }}
         >
           <Typography variant="h4">{user?.displayName}</Typography>
-          <Typography sx={{ opacity: 0.72 }}>{position}</Typography>
+          <Typography sx={{ opacity: 0.72 }}>Member since October 2021</Typography>
         </Box>
       </InfoStyle>
       <Image
