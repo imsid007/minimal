@@ -1,9 +1,10 @@
 // @mui
 import { Box, Card, Button, Typography, Stack, Paper } from '@mui/material';
 // @types
-import { UserAddressBook } from '../../../../@types/user';
+
+import { UserAddressBook } from 'src/@types/user';
 // components
-import Iconify from '../../../../components/Iconify';
+import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
