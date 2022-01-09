@@ -19,21 +19,15 @@ import Layout from '../../../layouts';
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import { SkeletonPostItem } from '../../../components/skeleton';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+
 // sections
-import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/@dashboard/blog';
+import { BlogPostsSearch } from '../../../sections/@dashboard/blog';
 import EventCard from '../event-card';
 import TabsHeader from '../tabs-header';
 import TextIconLabel from 'src/components/TextIconLabel';
 import CreateEventDrawer from '../siders/create-event';
 
 // ----------------------------------------------------------------------
-
-const SORT_OPTIONS = [
-  { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
-  { value: 'oldest', label: 'Oldest' },
-];
 
 // ----------------------------------------------------------------------
 

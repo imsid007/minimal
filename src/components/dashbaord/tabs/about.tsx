@@ -53,6 +53,25 @@ export default function About() {
     },
   ];
 
+  const bullets = [
+    {
+      title: 'Visibility',
+      description: 'Mon to Sat 9 am - 7 pm',
+    },
+    {
+      title: 'Location',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius congue',
+    },
+    {
+      title: 'Category',
+      description: 'Categort type 1, Categort type 2, Categort type 3',
+    },
+    {
+      title: 'Created at',
+      description: '03-04-2021',
+    },
+  ];
+
   return (
     <div>
       <TabsHeader heading="About this club" />
@@ -117,30 +136,14 @@ export default function About() {
         </div>
         <Divider />
         <Grid container style={{ marginTop: '20px' }}>
-          <Grid item xs={3} style={{ padding: '10px' }}>
-            <Typography variant="h6">Visibility</Typography>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Mon to Sat 9 am - 7 pm
-            </Typography>
-          </Grid>
-          <Grid item xs={3} style={{ padding: '10px' }}>
-            <Typography variant="h6">Location</Typography>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius congue
-            </Typography>
-          </Grid>
-          <Grid item xs={3} style={{ padding: '10px' }}>
-            <Typography variant="h6">Category</Typography>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Categort type 1, Categort type 2, Categort type 3
-            </Typography>
-          </Grid>
-          <Grid item xs={3} style={{ padding: '10px' }}>
-            <Typography variant="h6">Created at</Typography>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              03-04-2021
-            </Typography>
-          </Grid>
+          {bullets.map((bullet) => (
+            <Grid key={Math.random()} item xs={3} style={{ padding: '10px' }}>
+              <Typography variant="h6">{bullet.title}</Typography>
+              <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                {bullet.description}
+              </Typography>
+            </Grid>
+          ))}
         </Grid>
         <Divider />
         <Grid container style={{ marginTop: '20px' }}>

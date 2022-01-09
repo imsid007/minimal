@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box, BoxProps } from '@mui/material';
+import Iconify from 'src/components/Iconify';
 
 // ----------------------------------------------------------------------
 

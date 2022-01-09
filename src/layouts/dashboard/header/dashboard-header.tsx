@@ -104,11 +104,11 @@ export default function DashboardHeaderV2({
       <Toolbar
         sx={{
           minHeight: '100% !important',
-          //   px: { lg: 5 },
         }}
         style={{
+          boxShadow: filter ? '00px 4px 30px rgba(0, 0, 0, 0.05)' : '0px 0px 0px',
           padding: ' 0 2%',
-          borderBottom: '1px solid #EEEEEE',
+          borderBottom: filter ?? '1px solid #EEEEEE',
           width: '100%',
           height: '100%',
         }}
@@ -163,6 +163,8 @@ export default function DashboardHeaderV2({
         <Toolbar
           sx={{
             minHeight: '100% !important',
+            boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.05)',
+
             //   px: { lg: 5 },
           }}
           style={{ padding: ' 0 10%', width: '100%', height: '100%', backgroundColor: '#ffffffcc' }}
@@ -176,6 +178,7 @@ export default function DashboardHeaderV2({
                 placeholder="search"
                 style={{ borderRadius: '30px', overflow: 'hidden' }}
                 InputProps={{
+                  disableUnderline: true,
                   startAdornment: (
                     <InputAdornment position="start">
                       <Iconify icon="bx:bx-search" width={24} height={24} />
@@ -185,7 +188,14 @@ export default function DashboardHeaderV2({
               />
             </div>
             <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
-              <TextField variant="standard" fullWidth label="Inactive" />
+              <TextField
+                variant="standard"
+                fullWidth
+                label="Inactive"
+                InputProps={{
+                  disableUnderline: true,
+                }}
+              />
             </div>
             <div style={{ width: '28%', padding: '0 3%', borderRight: '1px solid #EEEEEE' }}>
               <TextField
@@ -193,6 +203,9 @@ export default function DashboardHeaderV2({
                 fullWidth
                 variant="standard"
                 size="small"
+                InputProps={{
+                  disableUnderline: true,
+                }}
                 //   value={currency}
                 label=" "
                 SelectProps={{ native: true }}
