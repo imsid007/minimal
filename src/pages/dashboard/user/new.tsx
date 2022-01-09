@@ -36,9 +36,6 @@ export default function UserCreate() {
         />
         <UserNewForm />
       </Container>
-      <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-        {list(anchor)}
-      </Drawer>
     </Page>
   );
 }

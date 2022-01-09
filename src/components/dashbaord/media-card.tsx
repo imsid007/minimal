@@ -21,14 +21,17 @@ const IconStyle = styled(Iconify)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
+interface Props {
+  iSseeAll?: boolean;
+  cardHeader: string;
+}
+
 const imagesLightbox = [...Array(8)].map((_, index) => _mock.image.feed(index + 1));
 
-export default function MediaCard() {
-  const POSTS = [];
-
+export default function MediaCard({ isSeeAll, cardHeader }: Props) {
   return (
-    <Card>
-      <CardHeader title="Social" />
+    <div>
+      <CardHeader title={cardHeader} />
       <Container
         sx={{
           display: 'grid',
@@ -53,14 +56,16 @@ export default function MediaCard() {
         ))}
       </Container>
       <div style={{ width: '100%', textAlign: 'center', marginBottom: '20px' }}>
-        <Button
-          style={{ marginTop: '20px', padding: '10px 20px' }}
-          variant="outlined"
-          target="_blank"
-        >
-          See All
-        </Button>
+        {isSeeAll ? (
+          <Button
+            style={{ marginTop: '20px', padding: '10px 20px' }}
+            variant="outlined"
+            target="_blank"
+          >
+            See All
+          </Button>
+        ) : null}
       </div>
-    </Card>
+    </div>
   );
 }

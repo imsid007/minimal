@@ -14,6 +14,7 @@ import Iconify from 'src/components/Iconify';
 import LightboxModal from 'src/components/LightboxModal';
 import TextIconLabel from 'src/components/TextIconLabel';
 import TabsHeader from '../tabs-header';
+import CreateAlbumDrawer from '../siders/create-album';
 
 // ----------------------------------------------------------------------
 
@@ -37,6 +38,7 @@ type Props = {
 export default function Media({ gallery }: Props) {
   const [openLightbox, setOpenLightbox] = useState(false);
   const [selectedImage, setSelectedImage] = useState<number>(0);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const imagesLightbox = gallery.map((img) => img.imageUrl);
 
@@ -63,9 +65,11 @@ export default function Media({ gallery }: Props) {
               </SvgIcon>
             }
             value={
-              <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
-                Create Album
-              </Typography>
+              <div onClick={() => setIsDrawerOpen(true)}>
+                <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
+                  Create Album
+                </Typography>
+              </div>
             }
           />
         }
@@ -96,6 +100,7 @@ export default function Media({ gallery }: Props) {
           isOpen={openLightbox}
           onCloseRequest={() => setOpenLightbox(false)}
         />
+        <CreateAlbumDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
       </Card>
     </Box>
   );
@@ -110,6 +115,7 @@ type GalleryItemProps = {
 
 function GalleryItem({ image, onOpenLightbox }: GalleryItemProps) {
   const { imageUrl, title, postAt } = image;
+
   return (
     <Card sx={{ cursor: 'pointer', position: 'relative' }}>
       <Image

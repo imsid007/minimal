@@ -16,9 +16,13 @@ import Page from 'src/components/Page';
 import TextIconLabel from 'src/components/TextIconLabel';
 import Iconify from 'src/components/Iconify';
 import TabsHeader from '../tabs-header';
+import { useState } from 'react';
+import CreateRoleDrawer from '../siders/create-role';
 
 const about = [1, 2, 3];
 export default function About() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   return (
     <div>
       <TabsHeader heading="About this club" />
@@ -207,6 +211,31 @@ export default function About() {
           </Grid>
         </Grid>
       </Card>
+      <TabsHeader
+        sx={{ mt: 3 }}
+        heading="Roles for Club"
+        action={
+          <TextIconLabel
+            icon={
+              <SvgIcon color="action" style={{ width: '25px' }}>
+                <Iconify
+                  sx={{ mr: '2', color: 'rgba(0, 171, 85, 1)' }}
+                  icon={'ant-design:plus-circle-outlined'}
+                  width={15}
+                  height={15}
+                />
+              </SvgIcon>
+            }
+            value={
+              <div style={{ cursor: 'pointer' }} onClick={() => setIsDrawerOpen(true)}>
+                <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
+                  Add new role
+                </Typography>
+              </div>
+            }
+          />
+        }
+      />
       {about.map((data) => (
         <Accordion
           key={Math.random()}
@@ -231,6 +260,8 @@ export default function About() {
           </AccordionDetails>
         </Accordion>
       ))}
+
+      <CreateRoleDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
     </div>
   );
 }
