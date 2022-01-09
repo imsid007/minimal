@@ -57,7 +57,7 @@ export default function BookingNewestBooking() {
 
   return (
     <Box sx={{ py: 2 }}>
-      <CardHeader
+      {/* <CardHeader
         title="Newest Booking"
         subheader="12 Booking"
         action={
@@ -73,7 +73,7 @@ export default function BookingNewestBooking() {
           mb: 3,
           '& .MuiCardHeader-action': { alignSelf: 'center' },
         }}
-      />
+      /> */}
 
       <Slider ref={carouselRef} {...settings}>
         {_bookingNew.map((item) => (

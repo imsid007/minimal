@@ -63,7 +63,7 @@ export default function ChangePassword({ myProfile }: Props) {
     }
   };
   return (
-    <Page title="User: Account">
+    <Page title="User: Account" sx={{ mb: 4 }}>
       <Container sx={{ mt: 0 }} maxWidth={themeStretch ? false : 'lg'}>
         <Card sx={{ p: 3 }}>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>

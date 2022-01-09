@@ -2,7 +2,7 @@ import { useSnackbar } from 'notistack';
 // form
 import { useForm } from 'react-hook-form';
 // @mui
-import { Card, Stack, Typography, Container } from '@mui/material';
+import { Card, Stack, Typography, Container, Switch } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
 import { FormProvider, RHFSwitch } from '../../components/hook-form';
@@ -13,19 +13,25 @@ import useSettings from 'src/hooks/useSettings';
 const ACTIVITY_OPTIONS = [
   {
     value: 'activityComments',
-    label: 'Email me when someone comments onmy article',
+    label: 'Comanna comments on my avont',
   },
   {
     value: 'activityAnswers',
-    label: 'Email me when someone answers on my form',
+    label: 'Someone comments on my news',
   },
-  { value: 'activityFollows', label: 'Email me hen someone follows me' },
+  { value: 'activityFollows', label: 'Someone follows me' },
 ] as const;
 
 const APPLICATION_OPTIONS = [
   { value: 'applicationNews', label: 'News and announcements' },
   { value: 'applicationProduct', label: 'Weekly product updates' },
   { value: 'applicationBlog', label: 'Weekly blog digest' },
+] as const;
+
+const CLUBS_ACTIVITY = [
+  { value: 'applicationNews', label: 'Event is created' },
+  { value: 'applicationProduct', label: 'News is published' },
+  { value: 'applicationBlog', label: 'Album is created' },
 ] as const;
 
 const NOTIFICATION_SETTINGS = {
@@ -81,48 +87,76 @@ export default function Notifications() {
 
   return (
     <Container sx={{ mt: 1, mb: 4 }} maxWidth={themeStretch ? false : 'lg'}>
-      <Card sx={{ p: 3 }}>
-        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={3} alignItems="flex-end">
-            <Stack spacing={2} sx={{ width: 1 }}>
-              <Typography variant="overline" sx={{ color: 'text.secondary' }}>
-                Activity
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+        <Card sx={{ p: 3, mb: 2 }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="center">
+            <div>
+              <Typography variant="h6">Activity</Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                If you wish to stop all notifications turn this off. You can change this anytime
               </Typography>
+            </div>
+            <Switch defaultChecked />
+          </Stack>
+        </Card>
+
+        <Stack spacing={2} direction="row" alignItems="center">
+          <Card sx={{ p: 2, width: 1 }}>
+            <Stack spacing={2} sx={{}}>
+              <Typography variant="h6">Activity</Typography>
+              <Typography variant="body2">Sand me email when</Typography>
 
               <Stack spacing={1}>
                 {ACTIVITY_OPTIONS.map((activity) => (
-                  <RHFSwitch
-                    key={activity.value}
-                    name={activity.value}
-                    label={activity.label}
-                    sx={{ m: 0 }}
-                  />
+                  <Stack key={activity.value} direction="row" justifyContent="space-between">
+                    <Typography sx={{ color: 'text.secondary' }} variant="body2">
+                      {activity.label}
+                    </Typography>
+                    <Switch defaultChecked />
+                  </Stack>
                 ))}
               </Stack>
             </Stack>
-
-            <Stack spacing={2} sx={{ width: 1 }}>
-              <Typography variant="overline" sx={{ color: 'text.secondary' }}>
-                Application
-              </Typography>
+          </Card>
+          <Card sx={{ p: 2, width: 1 }}>
+            <Stack spacing={2}>
+              <Typography variant="h6">Clubs Activitv</Typography>
+              <Typography variant="body2">Send me email when activitv in following clut</Typography>
               <Stack spacing={1}>
-                {APPLICATION_OPTIONS.map((application) => (
-                  <RHFSwitch
-                    key={application.value}
-                    name={application.value}
-                    label={application.label}
-                    sx={{ m: 0 }}
-                  />
+                {CLUBS_ACTIVITY.map((activity) => (
+                  <Stack key={activity.value} direction="row" justifyContent="space-between">
+                    <Typography sx={{ color: 'text.secondary' }} variant="body2">
+                      {activity.label}
+                    </Typography>
+                    <Switch defaultChecked />
+                  </Stack>
                 ))}
               </Stack>
             </Stack>
+          </Card>
 
-            <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
+          <Card sx={{ p: 2, width: 1 }}>
+            <Stack spacing={2}>
+              <Typography variant="h6">Application</Typography>
+              <Typography variant="body2">Send me email for</Typography>
+              <Stack spacing={1}>
+                {APPLICATION_OPTIONS.map((activity) => (
+                  <Stack key={activity.value} direction="row" justifyContent="space-between">
+                    <Typography sx={{ color: 'text.secondary' }} variant="body2">
+                      {activity.label}
+                    </Typography>
+                    <Switch defaultChecked />
+                  </Stack>
+                ))}
+              </Stack>
+            </Stack>
+          </Card>
+
+          {/* <LoadingButton type="submit" variant="contained" loading={isSubmitting}>
               Save Changes
-            </LoadingButton>
-          </Stack>
-        </FormProvider>
-      </Card>
+            </LoadingButton> */}
+        </Stack>
+      </FormProvider>
     </Container>
   );
 }

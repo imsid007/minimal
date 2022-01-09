@@ -22,6 +22,11 @@ import {
   Container,
   TablePagination,
 } from '@mui/material';
+import TabsHeader from 'src/components/dashbaord/tabs-header';
+import {
+  BookingNewestBooking,
+  BookingReservationStats,
+} from 'src/sections/@dashboard/general/booking';
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
@@ -109,100 +114,103 @@ export default function Receipts() {
 
   return (
     <Page title="User: Account">
-      <Container sx={{ mt: 0 }} maxWidth={themeStretch ? false : 'lg'}>
-        <Card>
-          <UserListToolbar
-            numSelected={selected.length}
-            filterName={filterName}
-            onFilterName={handleFilterByName}
-            onDeleteUsers={() => handleDeleteMultiUser(selected)}
-          />
+      <Card>
+        <Typography sx={{ ml: 3, mt: 3 }} variant="h6">
+          Receipts
+        </Typography>
+        <UserListToolbar
+          numSelected={selected.length}
+          filterName={filterName}
+          onFilterName={handleFilterByName}
+          onDeleteUsers={() => handleDeleteMultiUser(selected)}
+        />
 
-          <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
-              <Table>
-                <UserListHead
-                  order={order}
-                  orderBy={orderBy}
-                  headLabel={TABLE_HEAD}
-                  rowCount={Receipts.length}
-                  numSelected={selected.length}
-                  onRequestSort={handleRequestSort}
-                  onSelectAllClick={handleSelectAllClick}
-                />
-                <TableBody>
-                  {filteredUsers
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((row) => {
-                      const { id, name, role, status, company, avatarUrl, isVerified } = row;
-                      const isItemSelected = selected.indexOf(name) !== -1;
+        <Scrollbar>
+          <TableContainer sx={{ minWidth: 800 }}>
+            <Table>
+              <UserListHead
+                order={order}
+                orderBy={orderBy}
+                headLabel={TABLE_HEAD}
+                rowCount={Receipts.length}
+                numSelected={selected.length}
+                onRequestSort={handleRequestSort}
+                onSelectAllClick={handleSelectAllClick}
+              />
+              <TableBody>
+                {filteredUsers
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => {
+                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                    const isItemSelected = selected.indexOf(name) !== -1;
 
-                      return (
-                        <TableRow
-                          hover
-                          key={id}
-                          tabIndex={-1}
-                          role="checkbox"
-                          selected={isItemSelected}
-                          aria-checked={isItemSelected}
-                        >
-                          <TableCell padding="checkbox">
-                            <Checkbox checked={isItemSelected} onClick={() => handleClick(name)} />
-                          </TableCell>
-                          <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Avatar alt={name} src={avatarUrl} sx={{ mr: 2 }} />
-                            <Typography variant="subtitle2" noWrap>
-                              {name}
-                            </Typography>
-                          </TableCell>
-                          <TableCell align="left">{company}</TableCell>
-                          <TableCell align="left">{role}</TableCell>
-                          <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
-                          <TableCell align="left">
-                            <Label
-                              variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-                              color={(status === 'banned' && 'error') || 'success'}
-                            >
-                              {sentenceCase(status)}
-                            </Label>
-                          </TableCell>
+                    return (
+                      <TableRow
+                        hover
+                        key={id}
+                        tabIndex={-1}
+                        role="checkbox"
+                        selected={isItemSelected}
+                        aria-checked={isItemSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox checked={isItemSelected} onClick={() => handleClick(name)} />
+                        </TableCell>
+                        <TableCell sx={{ display: 'flex', alignItems: 'center' }}>
+                          <Avatar alt={name} src={avatarUrl} sx={{ mr: 2 }} />
+                          <Typography variant="subtitle2" noWrap>
+                            {name}
+                          </Typography>
+                        </TableCell>
+                        <TableCell align="left">{company}</TableCell>
+                        <TableCell align="left">{role}</TableCell>
+                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
+                        <TableCell align="left">
+                          <Label
+                            variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                            color={(status === 'banned' && 'error') || 'success'}
+                          >
+                            {sentenceCase(status)}
+                          </Label>
+                        </TableCell>
 
-                          <TableCell align="right">
-                            <UserMoreMenu onDelete={() => handleDeleteUser(id)} userName={name} />
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-                {isNotFound && (
-                  <TableBody>
-                    <TableRow>
-                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <SearchNotFound searchQuery={filterName} />
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
+                        <TableCell align="right">
+                          <UserMoreMenu onDelete={() => handleDeleteUser(id)} userName={name} />
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 53 * emptyRows }}>
+                    <TableCell colSpan={6} />
+                  </TableRow>
                 )}
-              </Table>
-            </TableContainer>
-          </Scrollbar>
+              </TableBody>
+              {isNotFound && (
+                <TableBody>
+                  <TableRow>
+                    <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                      <SearchNotFound searchQuery={filterName} />
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              )}
+            </Table>
+          </TableContainer>
+        </Scrollbar>
 
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={userList.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={(e, page) => setPage(page)}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Card>
-      </Container>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={userList.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={(e, page) => setPage(page)}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Card>
+      <TabsHeader sx={{ mt: 2 }} heading="Documents" />
+      <BookingNewestBooking />
     </Page>
   );
 }

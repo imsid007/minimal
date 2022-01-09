@@ -17,6 +17,7 @@ import Breadcrumbs, { Props as BreadcrumbsProps } from './Breadcrumbs';
 interface Props {
   action?: ReactNode;
   heading: string;
+  sx?: any;
 }
 
 export default function TabsHeader({
