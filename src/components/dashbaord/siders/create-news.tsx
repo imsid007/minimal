@@ -1,9 +1,7 @@
 import { Button, Card, Drawer, Stack, Switch, TextField, Typography } from '@mui/material';
 
 import React from 'react';
-import { ReactNode } from 'react';
 import { RHFUploadSingleFile } from 'src/components/hook-form';
-import { FileUpload } from '../file-upload';
 import { styled } from '@mui/material/styles';
 
 interface Props {
