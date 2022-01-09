@@ -1,48 +1,27 @@
+import Page from 'src/components/Page';
 import { sentenceCase } from 'change-case';
+import Layout from '../../../src/layouts';
 import { useState } from 'react';
-// next
-import NextLink from 'next/link';
-// @mui
+import useSettings from 'src/hooks/useSettings';
+import Scrollbar from '../../components/Scrollbar';
+import { _userList } from '../../_mock';
+import Label from '../../components/Label';
 import { useTheme } from '@mui/material/styles';
+import { UserListHead, UserListToolbar, UserMoreMenu } from '../../sections/@dashboard/user/list';
+import SearchNotFound from '../../components/SearchNotFound';
 import {
+  Typography,
   Card,
   Table,
   Avatar,
-  Button,
   Checkbox,
   TableRow,
   TableBody,
   TableCell,
-  Container,
-  Typography,
   TableContainer,
+  Container,
   TablePagination,
 } from '@mui/material';
-// routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
-// hooks
-import useSettings from '../../../hooks/useSettings';
-// @types
-import { UserManager } from '../../../@types/user';
-// _mock_
-import { _userList } from '../../../_mock';
-// layouts
-import Layout from '../../../layouts';
-// components
-import Page from '../../../components/Page';
-import Label from '../../../components/Label';
-import Iconify from '../../../components/Iconify';
-import Scrollbar from '../../../components/Scrollbar';
-
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
-// sections
-import {
-  UserListHead,
-  UserListToolbar,
-  UserMoreMenu,
-} from '../../../sections/@dashboard/user/list';
-
-// ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
@@ -53,25 +32,20 @@ const TABLE_HEAD = [
   { id: '' },
 ];
 
-// ----------------------------------------------------------------------
-
-UserList.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout>{page}</Layout>;
+Receipts.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout variant="main">{page}</Layout>;
 };
 
-// ----------------------------------------------------------------------
-
-export default function UserList() {
+export default function Receipts() {
   const theme = useTheme();
   const { themeStretch } = useSettings();
-
-  const [userList, setUserList] = useState(_userList);
-  const [page, setPage] = useState(0);
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [selected, setSelected] = useState<string[]>([]);
-  const [orderBy, setOrderBy] = useState('name');
   const [filterName, setFilterName] = useState('');
+  const [orderBy, setOrderBy] = useState('name');
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [userList, setUserList] = useState(_userList);
+  const [page, setPage] = useState(0);
 
   const handleRequestSort = (property: string) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -86,6 +60,11 @@ export default function UserList() {
       return;
     }
     setSelected([]);
+  };
+
+  const handleFilterByName = (filterName: string) => {
+    setFilterName(filterName);
+    setPage(0);
   };
 
   const handleClick = (name: string) => {
@@ -105,14 +84,8 @@ export default function UserList() {
     }
     setSelected(newSelected);
   };
-
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const handleFilterByName = (filterName: string) => {
-    setFilterName(filterName);
     setPage(0);
   };
 
@@ -135,24 +108,8 @@ export default function UserList() {
   const isNotFound = !filteredUsers.length && Boolean(filterName);
 
   return (
-    <Page title="User: List">
-      <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="User List"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'List' },
-          ]}
-          action={
-            <NextLink href={PATH_DASHBOARD.user.newUser} passHref>
-              <Button variant="contained" startIcon={<Iconify icon={'eva:plus-fill'} />}>
-                New User
-              </Button>
-            </NextLink>
-          }
-        />
-
+    <Page title="User: Account">
+      <Container sx={{ mt: 0 }} maxWidth={themeStretch ? false : 'lg'}>
         <Card>
           <UserListToolbar
             numSelected={selected.length}
@@ -168,7 +125,7 @@ export default function UserList() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={userList.length}
+                  rowCount={Receipts.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -249,8 +206,6 @@ export default function UserList() {
     </Page>
   );
 }
-
-// ----------------------------------------------------------------------
 
 type Anonymous = Record<string | number, string>;
 

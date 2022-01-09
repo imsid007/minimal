@@ -22,7 +22,7 @@ export default function AccountBillingInvoiceHistory({ invoices }: Props) {
       </Typography>
 
       <Stack spacing={2} sx={{ width: 1 }}>
-        {invoices.map((invoice) => (
+        {invoices?.map((invoice) => (
           <Stack key={invoice.id} direction="row" justifyContent="space-between" sx={{ width: 1 }}>
             <Typography variant="body2" sx={{ minWidth: 160 }}>
               {fDate(invoice.createdAt)}
