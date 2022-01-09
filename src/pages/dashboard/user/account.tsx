@@ -29,6 +29,22 @@ UserAccount.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };
 
+const TabsWrapperStyle = styled('div')(({ theme }) => ({
+  zIndex: 9,
+  bottom: 0,
+  width: '100%',
+  display: 'flex',
+  position: 'absolute',
+  backgroundColor: theme.palette.background.paper,
+  [theme.breakpoints.up('sm')]: {
+    justifyContent: 'center',
+  },
+  [theme.breakpoints.up('md')]: {
+    justifyContent: 'flex-end',
+    paddingRight: theme.spacing(3),
+  },
+}));
+
 // ----------------------------------------------------------------------
 
 export default function UserAccount() {
@@ -81,24 +97,25 @@ export default function UserAccount() {
             { name: 'Account Settings' },
           ]}
         />
-
-        <Tabs
-          value={currentTab}
-          scrollButtons="auto"
-          variant="scrollable"
-          allowScrollButtonsMobile
-          onChange={(e, value) => setCurrentTab(value)}
-        >
-          {ACCOUNT_TABS.map((tab) => (
-            <Tab
-              disableRipple
-              key={tab.value}
-              label={capitalCase(tab.value)}
-              icon={tab.icon}
-              value={tab.value}
-            />
-          ))}
-        </Tabs>
+        <TabsWrapperStyle>
+          <Tabs
+            value="General"
+            scrollButtons="auto"
+            variant="scrollable"
+            allowScrollButtonsMobile
+            onChange={(e, value) => setCurrentTab(value)}
+          >
+            {ACCOUNT_TABS.map((tab) => (
+              <Tab
+                disableRipple
+                key={tab.value}
+                label={capitalCase(tab.value)}
+                icon={tab.icon}
+                value={tab.value}
+              />
+            ))}
+          </Tabs>
+        </TabsWrapperStyle>
 
         <Box sx={{ mb: 5 }} />
 

@@ -1,5 +1,5 @@
 // @mui
-import { Box, Card, Button, Typography, Stack, Paper } from '@mui/material';
+import { Box, Card, Button, Typography, Stack, Paper, TextField } from '@mui/material';
 // @types
 
 import { UserAddressBook } from 'src/@types/user';
@@ -71,6 +71,37 @@ export default function AccountBillingAddressBook({ addressBook }: Props) {
         <Button size="small" startIcon={<Iconify icon={'eva:plus-fill'} />}>
           Add new address
         </Button>
+        <Paper
+          sx={{
+            p: 3,
+            width: 1,
+            bgcolor: 'background.neutral',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'grid',
+              columnGap: 2,
+              rowGap: 3,
+              gridTemplateColumns: { xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' },
+            }}
+          >
+            <TextField fullWidth multiline label="Name" />
+            <TextField fullWidth multiline label="Relation" />
+            <TextField fullWidth multiline label="Contact Number 1" />
+            <TextField fullWidth multiline label="Contact Number 2" />
+          </Box>
+        </Paper>
+      </Stack>
+      <Stack sx={{ mt: 3 }} direction="row" justifyContent="flex-end">
+        <div>
+          <Button color="inherit" variant="outlined" size="large">
+            Cancel
+          </Button>
+          <Button sx={{ ml: 1 }} variant="contained" size="large">
+            Save Changes
+          </Button>
+        </div>
       </Stack>
     </Card>
   );

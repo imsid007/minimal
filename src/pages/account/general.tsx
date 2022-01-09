@@ -1,6 +1,6 @@
 // @mui
 
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Typography } from '@mui/material';
 import {
   _userFeeds,
   _userFriends,
@@ -21,6 +21,8 @@ import Layout from '../../../src/layouts';
 import Page from 'src/components/Page';
 import AccountUserNewForm from './components/userfrom';
 import AccountBillingAddressBook from './components/accountbilling';
+import { styled } from '@mui/material/styles';
+import { RHFUploadSingleFile } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------
 
@@ -30,15 +32,28 @@ General.getLayout = function getLayout(page: React.ReactElement) {
 
 // ----------------------------------------------------------------------
 
+const LabelStyle = styled(Typography)(({ theme }) => ({
+  ...theme.typography.subtitle2,
+  color: theme.palette.text.secondary,
+  marginBottom: theme.spacing(1),
+}));
+
 export default function General() {
   const { themeStretch } = useSettings();
 
   return (
     <Page title="User: Account">
       <Container sx={{ mt: 0 }} maxWidth={themeStretch ? false : 'lg'}>
+        <Grid item xs={12}>
+          <div>
+            {/* <LabelStyle>Cover</LabelStyle> */}
+            <RHFUploadSingleFile name="cover" accept="image/*" maxSize={3145728} />
+          </div>
+        </Grid>
+
         <AccountUserNewForm />
-        <Grid container sx={{ mt: 5, mb: 5 }} spacing={2}>
-          <Grid item xs={12} md={4}></Grid>
+        <Grid container sx={{ mt: 2, mb: 5 }} spacing={2}>
+          <Grid item md={4}></Grid>
           <Grid item xs={12} md={8}>
             <AccountBillingAddressBook addressBook={_addressBooks} />
           </Grid>

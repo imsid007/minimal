@@ -74,7 +74,7 @@ Account.getLayout = function getLayout(page: React.ReactElement) {
 export default function Account() {
   const { themeStretch } = useSettings();
 
-  const [currentTab, setCurrentTab] = useState('profile');
+  const [currentTab, setCurrentTab] = useState('general');
 
   const handleChangeTab = (newValue: string) => {
     setCurrentTab(newValue);

@@ -80,7 +80,7 @@ export default function Notifications() {
   };
 
   return (
-    <Container sx={{ mt: 0 }} maxWidth={themeStretch ? false : 'lg'}>
+    <Container sx={{ mt: 1, mb: 4 }} maxWidth={themeStretch ? false : 'lg'}>
       <Card sx={{ p: 3 }}>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={3} alignItems="flex-end">
