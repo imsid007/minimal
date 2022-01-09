@@ -23,6 +23,36 @@ const about = [1, 2, 3];
 export default function About() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  const contact = [
+    {
+      title: 'Chandigarh Sector 20 Lorem ipsum dolor sit amet',
+      icon: 'carbon:location-filled',
+    },
+    {
+      title: 'davinder2038@gmail.com',
+      icon: 'fluent:mail-28-filled',
+    },
+    {
+      title: '+91-904-1226-707',
+      icon: 'ci:phone',
+    },
+  ];
+
+  const Emergency_contact = [
+    {
+      title: 'Harpreet kaur',
+      icon: 'bx:bxs-user',
+    },
+    {
+      title: '+91-904-1226-707, +91-700-9119-313',
+      icon: 'ci:phone',
+    },
+    {
+      title: 'Sister',
+      icon: 'emojione-monotone:two-hearts',
+    },
+  ];
+
   return (
     <div>
       <TabsHeader heading="About this club" />
@@ -116,98 +146,41 @@ export default function About() {
         <Grid container style={{ marginTop: '20px' }}>
           <Grid item xs={6}>
             <Typography variant="h6">Contact</Typography>
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify
-                    sx={{ mr: '2' }}
-                    icon={'carbon:location-filled'}
-                    width={15}
-                    height={15}
-                  />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
-                  Chandigarh Sector 20 Lorem ipsum dolor sit amet
-                </Typography>
-              }
-            />
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify sx={{ mr: '2' }} icon={'fluent:mail-28-filled'} width={15} height={15} />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
-                  davinder2038@gmail.com
-                </Typography>
-              }
-            />
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify sx={{ mr: '2' }} icon={'ci:phone'} width={15} height={15} />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
-                  +91-904-1226-707
-                </Typography>
-              }
-            />
+            {contact.map((contact) => (
+              <TextIconLabel
+                key={Math.random()}
+                sx={{ mt: 2 }}
+                icon={
+                  <SvgIcon color="action" style={{ width: '25px' }}>
+                    <Iconify sx={{ mr: '2' }} icon={contact.icon} width={15} height={15} />
+                  </SvgIcon>
+                }
+                value={
+                  <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
+                    {contact.title}
+                  </Typography>
+                }
+              />
+            ))}
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6">Emergency Contact</Typography>
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify sx={{ mr: '2' }} icon={'bx:bxs-user'} width={15} height={15} />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
-                  Harpreet kaur
-                </Typography>
-              }
-            />
-
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify
-                    sx={{ mr: '2' }}
-                    icon={'emojione-monotone:two-hearts'}
-                    width={15}
-                    height={15}
-                  />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
-                  +91-904-1226-707, +91-700-9119-313
-                </Typography>
-              }
-            />
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify sx={{ mr: '2' }} icon={'fluent:mail-28-filled'} width={15} height={15} />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
-                  Sister
-                </Typography>
-              }
-            />
+            {Emergency_contact.map((contact) => (
+              <TextIconLabel
+                key={Math.random()}
+                sx={{ mt: 2 }}
+                icon={
+                  <SvgIcon color="action" style={{ width: '25px' }}>
+                    <Iconify sx={{ mr: '2' }} icon={contact.icon} width={15} height={15} />
+                  </SvgIcon>
+                }
+                value={
+                  <Typography sx={{ ml: 2, color: 'text.secondary' }} variant="body1">
+                    {contact.title}
+                  </Typography>
+                }
+              />
+            ))}
           </Grid>
         </Grid>
       </Card>

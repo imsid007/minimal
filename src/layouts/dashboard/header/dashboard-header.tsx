@@ -27,6 +27,7 @@ import AccountPopover from './AccountPopover';
 
 import NotificationsPopover from './NotificationsPopover';
 import { useState } from 'react';
+import LanguagePopover from './LanguagePopover';
 
 // ----------------------------------------------------------------------
 
@@ -145,7 +146,12 @@ export default function DashboardHeaderV2({
           </Stack>
           <div>
             <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-              {/* <LanguagePopover /> */}
+              <Iconify
+                sx={{ color: 'rgba(99, 115, 129, 1)' }}
+                icon="bi:chat-fill"
+                width={24}
+                height={24}
+              />
               <NotificationsPopover />
               {/* <ContactsPopover /> */}
               <AccountPopover />
