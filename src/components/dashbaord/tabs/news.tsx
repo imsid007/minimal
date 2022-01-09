@@ -1,24 +1,12 @@
 // @mui
-import {
-  Grid,
-  Stack,
-  SvgIcon,
-  Typography,
-  Drawer,
-  Button,
-  Switch,
-  Card,
-  TextField,
-} from '@mui/material';
+import { Grid, Stack, SvgIcon, Typography, Card } from '@mui/material';
 // @types
 import { Profile as UserProfile, UserPost } from '../../../../@types/user';
 //
 
 import ProfileAbout from 'src/sections/@dashboard/user/profile/ProfileAbout';
 import ProfilePostCard from 'src/sections/@dashboard/user/profile/ProfilePostCard';
-import ProfilePostInput from 'src/sections/@dashboard/user/profile/ProfilePostInput';
-import ProfileFollowInfo from 'src/sections/@dashboard/user/profile/ProfileFollowInfo';
-import ProfileSocialInfo from 'src/sections/@dashboard/user/profile/ProfileSocialInfo';
+
 import TabsHeader from '../tabs-header';
 import TextIconLabel from 'src/components/TextIconLabel';
 import Iconify from 'src/components/Iconify';
@@ -32,9 +20,10 @@ import CreateNewsDrawer from '../siders/create-news';
 type Props = {
   myProfile: UserProfile;
   posts: UserPost[];
+  isSelf?: boolean;
 };
 
-export default function News({ myProfile, posts }: Props) {
+export default function News({ isSelf, myProfile, posts }: Props) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   return (
     <Page>
@@ -47,24 +36,26 @@ export default function News({ myProfile, posts }: Props) {
         <TabsHeader
           heading="News"
           action={
-            <TextIconLabel
-              sx={{ mt: 2 }}
-              icon={
-                <SvgIcon color="action" style={{ width: '25px' }}>
-                  <Iconify
-                    sx={{ mr: '2', color: 'rgba(0, 171, 85, 1)' }}
-                    icon={'ant-design:plus-circle-outlined'}
-                    width={15}
-                    height={15}
-                  />
-                </SvgIcon>
-              }
-              value={
-                <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
-                  Create news
-                </Typography>
-              }
-            />
+            isSelf ? (
+              <TextIconLabel
+                sx={{ mt: 2 }}
+                icon={
+                  <SvgIcon color="action" style={{ width: '25px' }}>
+                    <Iconify
+                      sx={{ mr: '2', color: 'rgba(0, 171, 85, 1)' }}
+                      icon={'ant-design:plus-circle-outlined'}
+                      width={15}
+                      height={15}
+                    />
+                  </SvgIcon>
+                }
+                value={
+                  <Typography sx={{ ml: 1, color: 'rgba(0, 171, 85, 1)' }} variant="h6">
+                    Create news
+                  </Typography>
+                }
+              />
+            ) : null
           }
         />
       </div>

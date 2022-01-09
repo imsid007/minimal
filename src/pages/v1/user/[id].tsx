@@ -28,11 +28,11 @@ import {
 import News from 'src/components/dashbaord/tabs/news';
 import Media from 'src/components/dashbaord/tabs/media';
 import MembersList from 'src/components/dashbaord/tabs/members';
-import EventList from 'src/components/dashbaord/tabs/evets';
-import { ChatRoom } from 'src/sections/@dashboard/chat';
 import Chat from 'src/pages/dashboard/chat/new';
-import About from 'src/components/dashbaord/tabs/about';
 import TabsHeader from 'src/components/dashbaord/tabs-header';
+import Resource from 'src/components/dashbaord/tabs/resourse';
+import Followers from 'src/components/dashbaord/tabs/followers';
+import ClubsList from 'src/components/dashbaord/tabs/clubs';
 
 // ----------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ export default function UserProfile() {
   const { themeStretch } = useSettings();
   const { user } = useAuth();
 
-  const [currentTab, setCurrentTab] = useState('About');
+  const [currentTab, setCurrentTab] = useState('Profile');
   const [findFriends, setFindFriends] = useState('');
 
   const handleChangeTab = (newValue: string) => {
@@ -77,30 +77,26 @@ export default function UserProfile() {
 
   const PROFILE_TABS = [
     {
-      value: 'About',
-      icon: <Iconify icon={'fa-solid:info-circle'} width={20} height={20} />,
-      component: <About />,
-    },
-    {
-      value: 'Events',
-      icon: <Iconify icon={'bi:calendar-event-fill'} width={20} height={20} />,
-      component: <EventList />,
-    },
-    // {
-    //   value: 'News',
-    //   icon: <Iconify icon={'eva:people-fill'} width={20} height={20} />,
-    //   component: (
-    //     <ProfileFriends
-    //       friends={_userFriends}
-    //       findFriends={findFriends}
-    //       onFindFriends={handleFindFriends}
-    //     />
-    //   ),
-    // },
-    {
-      value: 'News',
-      icon: <Iconify icon={'ion:newspaper-sharp'} width={20} height={20} />,
+      value: 'Profile',
+      icon: <Iconify icon={'carbon:user-avatar-filled'} width={20} height={20} />,
       component: <News myProfile={_userAbout} posts={_userFeeds} />,
+    },
+    {
+      value: 'Followers',
+      icon: <Iconify icon={'mdi:account-group'} width={20} height={20} />,
+      component: <Followers followers={_userFollowers} />,
+    },
+
+    {
+      value: 'Clubs',
+      icon: <Iconify icon={'eva:people-fill'} width={20} height={20} />,
+      component: (
+        <ClubsList
+          friends={_userFriends}
+          findFriends={findFriends}
+          onFindFriends={handleFindFriends}
+        />
+      ),
     },
     {
       value: 'Media',
@@ -108,19 +104,9 @@ export default function UserProfile() {
       component: <Media gallery={_userGallery} />,
     },
     {
-      value: 'Discussion',
-      icon: <Iconify icon={'healthicons:group-discussion-meetingx3'} width={20} height={20} />,
-      component: <Chat />,
-    },
-    {
-      value: 'Members',
-      icon: <Iconify icon={'mdi:account-group'} width={20} height={20} />,
-      component: <MembersList followers={_userFollowers} />,
-    },
-    {
-      value: 'More',
-      icon: <Iconify icon={'octicon:kebab-horizontal-16'} width={20} height={20} />,
-      component: <ProfileGallery gallery={_userGallery} />,
+      value: 'Resources',
+      icon: <Iconify icon={'fluent:vehicle-car-profile-ltr-20-filled'} width={20} height={20} />,
+      component: <Resource />,
     },
   ];
 
