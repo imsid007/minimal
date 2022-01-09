@@ -25,6 +25,7 @@ import Iconify from 'src/components/Iconify';
 import { Page } from '@react-pdf/renderer';
 import MediaCard from '../media-card';
 import { useState } from 'react';
+import CreateNewsDrawer from '../siders/create-news';
 
 // ----------------------------------------------------------------------
 
@@ -85,29 +86,7 @@ export default function News({ myProfile, posts }: Props) {
           </Stack>
         </Grid>
       </Grid>
-      <Drawer anchor="right" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-        <Card sx={{ width: '400px', height: '100%', padding: '40px 20px' }}>
-          <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <Typography variant="h6">Create News</Typography>
-            <div>
-              <Switch />
-            </div>
-          </Stack>
-          <Stack spacing={3}>
-            <TextField rows={5} fullWidth multiline label="Multiline" />
-            <Stack direction="row" justifyContent="flex-end">
-              <div>
-                <Button color="inherit" variant="outlined" size="large">
-                  Cancel
-                </Button>
-                <Button sx={{ ml: 1 }} variant="contained" size="large">
-                  Add
-                </Button>
-              </div>
-            </Stack>
-          </Stack>
-        </Card>
-      </Drawer>
+      <CreateNewsDrawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
     </Page>
   );
 }

@@ -45,33 +45,33 @@ export function RHFUploadAvatar({ name, ...other }: Props) {
 // ----------------------------------------------------------------------
 
 export function RHFUploadSingleFile({ name, ...other }: Props) {
-  const { control } = useFormContext();
+  // const { control } = useFormContext();
+
+  // return (
+  //   <Controller
+  //     name={name}
+  //     control={control}
+  //     render={({ field, fieldState: { error } }) => {
+  //       const checkError = !!error && !field.value;
 
   return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field, fieldState: { error } }) => {
-        const checkError = !!error && !field.value;
-
-        return (
-          <UploadSingleFile
-            accept="image/*"
-            file={field.value}
-            error={checkError}
-            helperText={
-              checkError && (
-                <FormHelperText error sx={{ px: 2 }}>
-                  {error.message}
-                </FormHelperText>
-              )
-            }
-            {...other}
-          />
-        );
-      }}
+    <UploadSingleFile
+      accept="image/*"
+      // file={field.value}
+      // error={checkError}
+      // helperText={
+      //   checkError && (
+      //     <FormHelperText error sx={{ px: 2 }}>
+      //       {error.message}
+      //     </FormHelperText>
+      //   )
+      // }
+      {...other}
     />
   );
+  //     }}
+  //   />
+  // );
 }
 
 // ----------------------------------------------------------------------
