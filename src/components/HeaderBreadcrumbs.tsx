@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 // @mui
 import { Box, Typography, Link } from '@mui/material';
 //
-import Breadcrumbs, { Props as BreadcrumbsProps } from './Breadcrumbs';
+import { Props as BreadcrumbsProps } from './Breadcrumbs';
 
 // ----------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ export default function HeaderBreadcrumbs({
           <Typography variant="h4" gutterBottom>
             {heading}
           </Typography>
-          <Breadcrumbs links={links} {...other} />
+          {/* <Breadcrumbs links={links} {...other} /> */}
         </Box>
 
         {action && <Box sx={{ flexShrink: 0 }}>{action}</Box>}

@@ -21,6 +21,7 @@ import Page from 'src/components/Page';
 import Iconify from 'src/components/Iconify';
 import { SkeletonPostItem } from 'src/components/skeleton';
 import HeaderBreadcrumbs from 'src/components/HeaderBreadcrumbs';
+import EventCard from 'src/components/dashbaord/event-card';
 // sections
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from 'src/sections/@dashboard/blog';
 import TabsHeader from 'src/components/dashbaord/tabs-header';

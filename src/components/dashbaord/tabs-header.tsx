@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { Box, Typography, Link } from '@mui/material';
 //
 
-import Breadcrumbs, { Props as BreadcrumbsProps } from './Breadcrumbs';
+// import Breadcrumbs, { Props as BreadcrumbsProps } from './Breadcrumbs';
 
 // ----------------------------------------------------------------------
 

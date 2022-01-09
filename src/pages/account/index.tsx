@@ -1,21 +1,11 @@
 // @mui
-import * as Yup from 'yup';
+
 import { capitalCase } from 'change-case';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Iconify from 'src/components/Iconify';
-import { Typography, Card, Box, Tabs, Tab, Grid, Container } from '@mui/material';
-import {
-  _userFeeds,
-  _userFriends,
-  _userGallery,
-  _userPayment,
-  _userAddressBook,
-  _userInvoices,
-  _userFollowers,
-  _addressBooks,
-  _userAbout,
-} from 'src/_mock';
+import { Typography, Box, Tabs, Tab, Grid, Container } from '@mui/material';
+import { _userAbout } from 'src/_mock';
 // routes
 import { PATH_DASHBOARD } from 'src/routes/paths';
 // hooks
@@ -25,16 +15,6 @@ import Layout from '../../../src/layouts';
 // components
 import Page from 'src/components/Page';
 import HeaderBreadcrumbs from 'src/components/HeaderBreadcrumbs';
-import {
-  AccountGeneral,
-  AccountBilling,
-  AccountSocialLinks,
-  AccountNotifications,
-  AccountChangePassword,
-} from '../../sections/@dashboard/user/account';
-import AccountUserNewForm from './components/userfrom';
-import AccountBillingAddressBook from './components/accountbilling';
-import { RHFUploadMultiFile } from '../../components/hook-form';
 
 import Receipts from 'src/components/dashbaord/account/receipts';
 import Notifications from 'src/components/dashbaord/account//notifications';

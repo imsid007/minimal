@@ -29,6 +29,7 @@ import { ChatSidebar, ChatWindow } from 'src/sections/@dashboard/chat';
 import { getConversations, getContacts } from 'src/redux/slices/chat';
 import { useDispatch } from 'src/redux/store';
 import Events from 'src/sections/@dashboard/user/profile/Events';
+import EventList from 'src/components/dashbaord/tabs/evets';
 
 // ----------------------------------------------------------------------
 
@@ -80,7 +81,7 @@ export default function UserProfile() {
     {
       value: 'Events',
       icon: <Iconify icon={'bi:calendar-event-fill'} width={20} height={20} />,
-      component: <Events />,
+      component: <EventList />,
     },
     {
       value: 'News',
