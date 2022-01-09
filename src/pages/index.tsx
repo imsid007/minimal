@@ -1,65 +1,54 @@
 // @mui
 import { styled } from '@mui/material/styles';
 // layouts
-import Layout from '../layouts';
+import Layout from 'src/layouts';
+
 // components
-import Page from '../components/Page';
-// sections
-import {
-  HomeHero,
-  HomeMinimal,
-  HomeDarkMode,
-  HomeLookingFor,
-  HomeColorPresets,
-  HomePricingPlans,
-  HomeAdvertisement,
-  HomeCleanInterfaces,
-  HomeHugePackElements,
-} from '../sections/home';
+import Page from 'src/components/Page';
+
+import { Box, Container, Typography } from '@mui/material';
+import { _userCards } from 'src/_mock';
+import { UserCard } from 'src/sections/@dashboard/user/cards';
+import useSettings from 'src/hooks/useSettings';
+import TabsHeader from 'src/components/dashbaord/tabs-header';
 
 // ----------------------------------------------------------------------
-
-const RootStyle = styled('div')(() => ({
-  height: '100%',
-}));
-
-const ContentStyle = styled('div')(({ theme }) => ({
-  overflow: 'hidden',
-  position: 'relative',
-  backgroundColor: theme.palette.background.default,
-}));
 
 // ----------------------------------------------------------------------
 
 HomePage.getLayout = function getLayout(page: React.ReactElement) {
-  return <Layout variant="main">{page}</Layout>;
+  return (
+    <Layout tab={1} variant="main" filter={true}>
+      {page}
+    </Layout>
+  );
 };
 
 // ----------------------------------------------------------------------
 
 export default function HomePage() {
+  const { themeStretch } = useSettings();
+
   return (
     <Page title="The starting point for your next project">
-      <RootStyle>
-        <HomeHero />
-        <ContentStyle>
-          <HomeMinimal />
-
-          <HomeHugePackElements />
-
-          <HomeDarkMode />
-
-          <HomeColorPresets />
-
-          <HomeCleanInterfaces />
-
-          <HomePricingPlans />
-
-          <HomeLookingFor />
-
-          <HomeAdvertisement />
-        </ContentStyle>
-      </RootStyle>
+      <Container sx={{ mt: 25, mb: 10 }} style={{ maxWidth: '1120px' }}>
+        <TabsHeader heading="Events" />
+        <Box
+          sx={{
+            display: 'grid',
+            gap: 3,
+            gridTemplateColumns: {
+              xs: 'repeat(1, 1fr)',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(3, 1fr)',
+            },
+          }}
+        >
+          {_userCards.map((user) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </Box>
+      </Container>
     </Page>
   );
 }

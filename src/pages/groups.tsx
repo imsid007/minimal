@@ -1,9 +1,9 @@
 // @mui
 import { styled } from '@mui/material/styles';
 // layouts
-import Layout from '../../layouts';
+import Layout from '../layouts';
 // components
-import Page from '../../components/Page';
+import Page from '../components/Page';
 import { Box, Container, Typography } from '@mui/material';
 import { _userCards } from 'src/_mock';
 import { UserCard } from 'src/sections/@dashboard/user/cards';

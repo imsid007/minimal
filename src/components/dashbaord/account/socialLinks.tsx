@@ -1,6 +1,6 @@
 import Page from 'src/components/Page';
 import { Container } from '@mui/material';
-import Layout from '../../../src/layouts';
+import Layout from 'src/layouts';
 import { useSnackbar } from 'notistack';
 import useSettings from 'src/hooks/useSettings';
 // form
@@ -11,8 +11,9 @@ import { LoadingButton } from '@mui/lab';
 // @typesi
 import { Profile } from 'src/@types/user';
 // components
-import Iconify from '../../components/Iconify';
-import { FormProvider, RHFTextField } from '../../components/hook-form';
+import Iconify from 'src/components/Iconify';
+
+import { FormProvider, RHFTextField } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------
 

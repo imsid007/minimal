@@ -158,7 +158,7 @@ export default function DashboardHeaderV2({
                 cursor: 'pointer',
               }}
             >
-              <Link passHref href="/v1/events">
+              <Link passHref href="/">
                 <Typography sx={{ color: tab == 1 ? 'rgba(0, 171, 85, 1)' : '#000000' }}>
                   Events
                 </Typography>
@@ -175,7 +175,7 @@ export default function DashboardHeaderV2({
                 cursor: 'pointer',
               }}
             >
-              <Link passHref href="/v1/groups">
+              <Link passHref href="/groups">
                 <Typography sx={{ color: tab == 2 ? 'rgba(0, 171, 85, 1)' : '#000000' }}>
                   Groups
                 </Typography>

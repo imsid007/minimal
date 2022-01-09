@@ -35,11 +35,12 @@ import {
 import AccountUserNewForm from './components/userfrom';
 import AccountBillingAddressBook from './components/accountbilling';
 import { RHFUploadMultiFile } from '../../components/hook-form';
-import Receipts from './receipts';
-import Notifications from './notifications';
-import SocialLinks from './socialLinks';
-import ChangePassword from './changePassword';
-import General from './general';
+
+import Receipts from 'src/components/dashbaord/account/receipts';
+import Notifications from 'src/components/dashbaord/account//notifications';
+import SocialLinks from 'src/components/dashbaord/account//socialLinks';
+import ChangePassword from '../../components/dashbaord/account/changePassword';
+import General from 'src/components/dashbaord/account//general';
 
 const TabsWrapperStyle = styled('div')(({ theme }) => ({
   zIndex: 9,

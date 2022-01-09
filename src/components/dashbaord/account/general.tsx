@@ -16,11 +16,12 @@ import {
 // hooks
 import useSettings from 'src/hooks/useSettings';
 // layouts
-import Layout from '../../../src/layouts';
-// components
+import Layout from 'src/layouts';
+
 import Page from 'src/components/Page';
-import AccountUserNewForm from './components/userfrom';
-import AccountBillingAddressBook from './components/accountbilling';
+import AccountUserNewForm from './userfrom';
+
+import AccountBillingAddressBook from 'src/components/dashbaord/account/accountbilling';
 import { styled } from '@mui/material/styles';
 import { RHFUploadSingleFile } from 'src/components/hook-form';
 

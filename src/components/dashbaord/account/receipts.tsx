@@ -1,14 +1,17 @@
 import Page from 'src/components/Page';
 import { sentenceCase } from 'change-case';
-import Layout from '../../../src/layouts';
+import Layout from 'src/layouts';
+
 import { useState } from 'react';
 import useSettings from 'src/hooks/useSettings';
-import Scrollbar from '../../components/Scrollbar';
-import { _userList } from '../../_mock';
-import Label from '../../components/Label';
+import Scrollbar from 'src/components/Scrollbar';
+import { _userList } from 'src/_mock';
+import Label from 'src/components/Label';
+
 import { useTheme } from '@mui/material/styles';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../../sections/@dashboard/user/list';
-import SearchNotFound from '../../components/SearchNotFound';
+
+import { UserListHead, UserListToolbar, UserMoreMenu } from 'src/sections/@dashboard/user/list';
+import SearchNotFound from 'src/components/SearchNotFound';
 import {
   Typography,
   Card,
@@ -19,14 +22,10 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  Container,
   TablePagination,
 } from '@mui/material';
 import TabsHeader from 'src/components/dashbaord/tabs-header';
-import {
-  BookingNewestBooking,
-  BookingReservationStats,
-} from 'src/sections/@dashboard/general/booking';
+import { BookingNewestBooking } from 'src/sections/@dashboard/general/booking';
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },

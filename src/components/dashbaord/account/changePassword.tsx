@@ -1,6 +1,6 @@
 import Page from 'src/components/Page';
 import { Container } from '@mui/material';
-import Layout from '../../../src/layouts';
+import Layout from '../../../layouts';
 import { useSnackbar } from 'notistack';
 import useSettings from 'src/hooks/useSettings';
 import * as Yup from 'yup';
@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form';
 import { Stack, Card } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
-import { FormProvider, RHFTextField } from '../../components/hook-form';
+import { FormProvider, RHFTextField } from '../../hook-form';
 
 // ----------------------------------------------------------------------
 

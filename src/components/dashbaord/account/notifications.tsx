@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import { Card, Stack, Typography, Container, Switch } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
-import { FormProvider, RHFSwitch } from '../../components/hook-form';
+import { FormProvider } from 'src/components/hook-form';
+
 import useSettings from 'src/hooks/useSettings';
 
 // ----------------------------------------------------------------------
