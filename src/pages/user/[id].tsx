@@ -101,7 +101,7 @@ export default function UserProfile() {
     {
       value: 'Media',
       icon: <Iconify icon={'foundation:photo'} width={20} height={20} />,
-      component: <Media gallery={_userGallery} />,
+      component: <MediaList gallery={_userGallery} />,
     },
     {
       value: 'Resources',

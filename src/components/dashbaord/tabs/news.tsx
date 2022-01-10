@@ -14,6 +14,7 @@ import { Page } from '@react-pdf/renderer';
 import MediaCard from '../media-card';
 import { useState } from 'react';
 import CreateNewsDrawer from '../siders/create-news';
+import UserStatisticsCard from '../user-statistics-card';
 
 // ----------------------------------------------------------------------
 
@@ -73,8 +74,18 @@ export default function News({ isSelf, myProfile, posts }: Props) {
           <Stack spacing={3}>
             {/* <ProfileFollowInfo profile={myProfile} /> */}
             <ProfileAbout profile={myProfile} />
-            <Card>
-              <MediaCard cardHeader="Recent media" isSeeAll={true} />
+            <Card
+              style={{
+                paddingBottom: '20px',
+                boxShadow:
+                  '0px 0px 2px rgba(145, 158, 171, 0.24), 0px 16px 32px rgba(145, 158, 171, 0.24)',
+              }}
+            >
+              {isSelf ? (
+                <MediaCard cardHeader="Recent media" isSeeAll={true} />
+              ) : (
+                <UserStatisticsCard />
+              )}
             </Card>
           </Stack>
         </Grid>
