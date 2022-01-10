@@ -56,20 +56,6 @@ const RootStyle = styled(AppBar, {
   },
 }));
 
-const TabsWrapperStyle = styled('div')(({ theme }) => ({
-  zIndex: 9,
-  bottom: 0,
-  display: 'flex',
-  height: '100%',
-  [theme.breakpoints.up('sm')]: {
-    justifyContent: 'center',
-  },
-  [theme.breakpoints.up('md')]: {
-    justifyContent: 'flex-end',
-    paddingRight: theme.spacing(3),
-  },
-}));
-
 // ----------------------------------------------------------------------
 
 type Props = {
@@ -87,6 +73,12 @@ const category = [
   'Carrier & Business',
 ];
 
+const menu = [
+  { id: 1, title: 'Events', url: '/' },
+  { id: 2, title: 'Groups', url: '/groups' },
+  { id: 3, title: 'Club Management', url: '#' },
+];
+
 export default function DashboardHeaderV2({
   onOpenSidebar,
   isCollapse = true,
@@ -95,12 +87,7 @@ export default function DashboardHeaderV2({
   tab,
 }: Props) {
   const isOffset = useOffSetTop(HEADER.DASHBOARD_DESKTOP_HEIGHT) && !verticalLayout;
-
-  const [currentTab, setCurrentTab] = useState('Evenets');
-
-  const handleChangeTab = (newValue: string) => {
-    setCurrentTab(newValue);
-  };
+  const isDesktop = useResponsive('up', 'lg');
 
   return (
     <RootStyle isCollapse={isCollapse} isOffset={isOffset} verticalLayout={verticalLayout}>
@@ -126,79 +113,50 @@ export default function DashboardHeaderV2({
           <div>
             <Logo sx={{ mr: 2.5, mb: 2 }} />
           </div>
-          <Stack direction="row" alignItems="center" style={{ height: '100%' }}>
-            <TextField
-              label=" "
-              variant="standard"
-              placeholder="search..."
-              style={{
-                width: '300px',
-                borderRadius: '30px',
-                backgroundColor: '#F4F6F8',
-                padding: '0 15px 10px  ',
-                overflow: 'hidden',
-              }}
-              InputProps={{
-                disableUnderline: true,
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Iconify icon="bx:bx-search" width={24} height={24} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <div
-              style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                borderBottom: tab == 1 ? '3px solid rgba(0, 171, 85, 1)' : '0px',
-                color: '#000000',
-                marginLeft: '50px',
-                cursor: 'pointer',
-              }}
-            >
-              <Link passHref href="/">
-                <Typography sx={{ color: tab == 1 ? 'rgba(0, 171, 85, 1)' : '#000000' }}>
-                  Events
-                </Typography>
-              </Link>
-            </div>
-            <div
-              style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                borderBottom: tab == 2 ? '3px solid rgba(0, 171, 85, 1)' : '0px',
-                color: '#000000',
-                marginLeft: '20px',
-                cursor: 'pointer',
-              }}
-            >
-              <Link passHref href="/groups">
-                <Typography sx={{ color: tab == 2 ? 'rgba(0, 171, 85, 1)' : '#000000' }}>
-                  Groups
-                </Typography>
-              </Link>
-            </div>
-            <div
-              style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                borderBottom: tab == 3 ? '3px solid rgba(0, 171, 85, 1)' : '0px',
-                color: '#000000',
-                marginLeft: '20px',
-                cursor: 'pointer',
-              }}
-            >
-              <Link passHref href="#">
-                <Typography sx={{ color: tab == 3 ? 'rgba(0, 171, 85, 1)' : '#000000' }}>
-                  Club Management
-                </Typography>
-              </Link>
-            </div>
-          </Stack>
+          {isDesktop ? (
+            <Stack direction="row" alignItems="center" style={{ height: '100%' }}>
+              <TextField
+                label=" "
+                variant="standard"
+                placeholder="search..."
+                style={{
+                  width: '300px',
+                  borderRadius: '30px',
+                  backgroundColor: '#F4F6F8',
+                  padding: '0 15px 10px  ',
+                  overflow: 'hidden',
+                }}
+                InputProps={{
+                  disableUnderline: true,
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Iconify icon="bx:bx-search" width={24} height={24} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              {menu.map((menu) => (
+                <div
+                  key={menu.id}
+                  style={{
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    borderBottom: tab == menu.id ? '3px solid rgba(0, 171, 85, 1)' : '0px',
+                    color: '#000000',
+                    marginLeft: '50px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <Link passHref href={menu.url}>
+                    <Typography sx={{ color: tab == menu.id ? 'rgba(0, 171, 85, 1)' : '#000000' }}>
+                      {menu.title}
+                    </Typography>
+                  </Link>
+                </div>
+              ))}
+            </Stack>
+          ) : null}
 
           <div>
             <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
@@ -215,7 +173,7 @@ export default function DashboardHeaderV2({
           </div>
         </Stack>
       </Toolbar>
-      {filter ? (
+      {filter && isDesktop ? (
         <Toolbar
           sx={{
             boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.05)',
