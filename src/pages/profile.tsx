@@ -30,6 +30,9 @@ import { getConversations, getContacts } from 'src/redux/slices/chat';
 import { useDispatch } from 'src/redux/store';
 import Events from 'src/sections/@dashboard/user/profile/Events';
 import EventList from 'src/components/dashbaord/tabs/evets';
+import News from 'src/components/dashbaord/tabs/news';
+import Media from 'src/components/dashbaord/tabs/media';
+import Followers from 'src/components/dashbaord/tabs/followers';
 
 // ----------------------------------------------------------------------
 
@@ -86,12 +89,12 @@ export default function UserProfile() {
     {
       value: 'News',
       icon: <Iconify icon={'ion:newspaper-sharp'} width={20} height={20} />,
-      component: <Profile myProfile={_userAbout} posts={_userFeeds} />,
+      component: <News myProfile={_userAbout} posts={_userFeeds} />,
     },
     {
       value: 'Media',
       icon: <Iconify icon={'foundation:photo'} width={20} height={20} />,
-      component: <ProfileGallery gallery={_userGallery} />,
+      component: <Media gallery={_userGallery} />,
     },
     {
       value: 'Discussion',
@@ -106,7 +109,7 @@ export default function UserProfile() {
     {
       value: 'Members',
       icon: <Iconify icon={'mdi:account-group'} width={20} height={20} />,
-      component: <ProfileFollowers followers={_userFollowers} />,
+      component: <Followers followers={_userFollowers} />,
     },
     {
       value: 'More',

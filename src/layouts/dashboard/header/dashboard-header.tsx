@@ -6,7 +6,6 @@ import {
   AppBar,
   Toolbar,
   TextField,
-  Input,
   InputAdornment,
   Typography,
 } from '@mui/material';
@@ -16,7 +15,7 @@ import useResponsive from '../../../hooks/useResponsive';
 // utils
 import cssStyles from '../../../utils/cssStyles';
 // config
-import { HEADER, NAVBAR } from '../../../config';
+import { HEADER } from '../../../config';
 // components
 import Logo from '../../../components/Logo';
 
@@ -25,8 +24,7 @@ import Iconify from 'src/components/Iconify';
 import AccountPopover from './AccountPopover';
 
 import NotificationsPopover from './NotificationsPopover';
-import { useState } from 'react';
-import LanguagePopover from './LanguagePopover';
+
 import Link from 'next/link';
 
 // ----------------------------------------------------------------------
@@ -175,10 +173,8 @@ export default function DashboardHeaderV2({
       </Toolbar>
       {filter && isDesktop ? (
         <Toolbar
-          sx={{
-            boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.05)',
-          }}
           style={{
+            boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.05)',
             padding: ' 2% 10% 3% 10%',
             width: '100%',
             height: '100%',
