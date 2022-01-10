@@ -38,29 +38,8 @@ export default function TabsHeader({
           {/* <Breadcrumbs links={links} {...other} /> */}
         </Box>
 
-        {action && <Box sx={{ flexShrink: 0 }}>{action}</Box>}
+        {action && <Box sx={{ flexShrink: 0, cursor: 'pointer' }}>{action}</Box>}
       </Box>
-
-      {/* <Box sx={{ mt: 2 }}>
-        {isString(moreLink) ? (
-          <Link href={moreLink} target="_blank" variant="body2">
-            {moreLink}
-          </Link>
-        ) : (
-          moreLink.map((href) => (
-            <Link
-              noWrap
-              key={href}
-              href={href}
-              variant="body2"
-              target="_blank"
-              sx={{ display: 'table' }}
-            >
-              {href}
-            </Link>
-          ))
-        )}
-      </Box> */}
     </Box>
   );
 }

@@ -18,13 +18,7 @@ import Page from 'src/components/Page';
 import Iconify from 'src/components/Iconify';
 
 // sections
-import {
-  About,
-  Profile,
-  ProfileCover,
-  ProfileGallery,
-  ProfileFollowers,
-} from 'src/sections/@dashboard/user/profile';
+import { ProfileCover, ProfileGallery } from 'src/sections/@dashboard/user/profile';
 import { ChatSidebar, ChatWindow } from 'src/sections/@dashboard/chat';
 import { getConversations, getContacts } from 'src/redux/slices/chat';
 import { useDispatch } from 'src/redux/store';
@@ -33,6 +27,7 @@ import EventList from 'src/components/dashbaord/tabs/evets';
 import News from 'src/components/dashbaord/tabs/news';
 import Media from 'src/components/dashbaord/tabs/media';
 import Followers from 'src/components/dashbaord/tabs/followers';
+import AboutUser from 'src/components/dashbaord/tabs/about';
 
 // ----------------------------------------------------------------------
 
@@ -79,7 +74,7 @@ export default function UserProfile() {
     {
       value: 'About',
       icon: <Iconify icon={'fa-solid:info-circle'} width={20} height={20} />,
-      component: <About myProfile={_userAbout} posts={_userFeeds} />,
+      component: <AboutUser myProfile={_userAbout} posts={_userFeeds} />,
     },
     {
       value: 'Events',
@@ -89,12 +84,12 @@ export default function UserProfile() {
     {
       value: 'News',
       icon: <Iconify icon={'ion:newspaper-sharp'} width={20} height={20} />,
-      component: <News myProfile={_userAbout} posts={_userFeeds} />,
+      component: <News isSelf={true} myProfile={_userAbout} posts={_userFeeds} />,
     },
     {
       value: 'Media',
       icon: <Iconify icon={'foundation:photo'} width={20} height={20} />,
-      component: <Media gallery={_userGallery} />,
+      component: <Media isSelf={true} gallery={_userGallery} />,
     },
     {
       value: 'Discussion',

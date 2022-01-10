@@ -20,7 +20,7 @@ import { useState } from 'react';
 import CreateRoleDrawer from '../siders/create-role';
 
 const about = [1, 2, 3];
-export default function About() {
+export default function AboutUser() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const contact = [
