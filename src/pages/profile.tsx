@@ -163,7 +163,13 @@ export default function UserProfile() {
             style={{ position: 'absolute', right: '20px', bottom: '50px', zIndex: '10' }}
           >
             <div>
-              <AvatarGroup max={3} spacing="small">
+              <AvatarGroup
+                sx={{
+                  '& .MuiAvatar-root': { width: 32, height: 32 },
+                }}
+                max={3}
+                spacing="small"
+              >
                 {userGroup.map((url) => (
                   <Avatar key={Math.random()} alt="Remy Sharp" src={url} />
                 ))}
@@ -173,7 +179,13 @@ export default function UserProfile() {
               </Typography>
             </div>
             <div style={{ marginLeft: '40px' }}>
-              <AvatarGroup max={3} spacing="small">
+              <AvatarGroup
+                sx={{
+                  '& .MuiAvatar-root': { width: 32, height: 32 },
+                }}
+                max={3}
+                spacing="small"
+              >
                 {userGroup.map((url) => (
                   <Avatar key={Math.random()} alt="Remy Sharp" src={url} />
                 ))}

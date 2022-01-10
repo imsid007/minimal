@@ -85,7 +85,13 @@ export default function UserCard({ user }: Props) {
           flexWrap="wrap"
           justifyContent="space-between"
         >
-          <AvatarGroup max={5} spacing="small">
+          <AvatarGroup
+            sx={{
+              '& .MuiAvatar-root': { width: 32, height: 32 },
+            }}
+            max={5}
+            spacing="small"
+          >
             <Avatar
               alt="Remy Sharp"
               src="https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg"
@@ -113,12 +119,7 @@ export default function UserCard({ user }: Props) {
           </AvatarGroup>
 
           <div>
-            <Stack
-              style={{ marginTop: '20px' }}
-              direction="row"
-              flexWrap="wrap"
-              justifyContent="space-between"
-            >
+            <Stack direction="row" flexWrap="wrap" justifyContent="space-between">
               <TextIconLabel
                 sx={{ mr: 2 }}
                 icon={
