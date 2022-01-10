@@ -80,8 +80,6 @@ export default function AboutUser() {
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Button
             variant={isFollow ? 'outlined' : 'contained'}
-            target="_blank"
-            rel="noopener"
             onClick={() => {
               setIsFollow(!isFollow);
             }}

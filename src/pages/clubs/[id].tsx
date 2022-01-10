@@ -2,18 +2,7 @@ import { capitalCase } from 'change-case';
 import { useEffect, useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
-import {
-  Tab,
-  Box,
-  Card,
-  Tabs,
-  Container,
-  Button,
-  AvatarGroup,
-  Stack,
-  Avatar,
-  Typography,
-} from '@mui/material';
+import { Tab, Box, Card, Tabs, Container } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from 'src/routes/paths';
 
@@ -29,6 +18,7 @@ import Page from 'src/components/Page';
 import Iconify from 'src/components/Iconify';
 
 // sections
+
 import { ProfileCover, ProfileGallery } from 'src/sections/@dashboard/user/profile';
 import { ChatSidebar, ChatWindow } from 'src/sections/@dashboard/chat';
 import { getConversations, getContacts } from 'src/redux/slices/chat';
@@ -124,13 +114,6 @@ export default function UserProfile() {
     },
   ];
 
-  const userGroup = [
-    'https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg',
-    'https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg',
-    'https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg',
-    'https://minimal-assets-api.vercel.app/assets/images/avatars/avatar_4.jpg',
-  ];
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getConversations());
@@ -148,41 +131,6 @@ export default function UserProfile() {
           }}
         >
           <ProfileCover myProfile={_userAbout} />
-
-          <Button
-            style={{ position: 'absolute', right: '20px', top: '20px', zIndex: '10' }}
-            variant="contained"
-            startIcon={<Iconify icon={'clarity:pencil-solid'} width={20} height={20} />}
-          >
-            Edit Profile
-          </Button>
-
-          <Stack
-            direction="row"
-            alignItems="center"
-            style={{ position: 'absolute', right: '20px', bottom: '50px', zIndex: '10' }}
-          >
-            <div>
-              <AvatarGroup max={3} spacing="small">
-                {userGroup.map((url) => (
-                  <Avatar key={Math.random()} alt="Remy Sharp" src={url} />
-                ))}
-              </AvatarGroup>
-              <Typography variant="body2" sx={{ color: '#fff', mt: 1 }}>
-                Follower
-              </Typography>
-            </div>
-            <div style={{ marginLeft: '40px' }}>
-              <AvatarGroup max={3} spacing="small">
-                {userGroup.map((url) => (
-                  <Avatar key={Math.random()} alt="Remy Sharp" src={url} />
-                ))}
-              </AvatarGroup>
-              <Typography variant="body2" sx={{ color: '#fff', mt: 1 }}>
-                Follower
-              </Typography>
-            </div>
-          </Stack>
 
           <TabsWrapperStyle>
             <Tabs
