@@ -26,6 +26,8 @@ import AccountPopover from './AccountPopover';
 import NotificationsPopover from './NotificationsPopover';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { m } from 'framer-motion';
 
 // ----------------------------------------------------------------------
 
@@ -87,6 +89,30 @@ export default function DashboardHeaderV2({
   const isOffset = useOffSetTop(HEADER.DASHBOARD_DESKTOP_HEIGHT) && !verticalLayout;
   const isDesktop = useResponsive('up', 'lg');
 
+  const [isShowMenu, setIsShowMenu] = useState(true);
+
+  let lastScrollTop = 0;
+
+  function handleScroll() {
+    let scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollY < 250) setIsShowMenu(true);
+    else {
+      if (scrollY > lastScrollTop) {
+        setIsShowMenu(false);
+      } else {
+        setIsShowMenu(true);
+      }
+      lastScrollTop = scrollY <= 0 ? 0 : scrollY;
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, false);
+    return () => {
+      window.removeEventListener('scroll', handleScroll, false);
+    };
+  }, []);
+
   return (
     <RootStyle isCollapse={isCollapse} isOffset={isOffset} verticalLayout={verticalLayout}>
       <Toolbar
@@ -100,6 +126,7 @@ export default function DashboardHeaderV2({
           width: '100%',
           height: '100%',
           backgroundColor: filter ? '#fff' : null,
+          zIndex: 999,
         }}
       >
         <Stack
@@ -172,7 +199,9 @@ export default function DashboardHeaderV2({
         </Stack>
       </Toolbar>
       {filter && isDesktop ? (
-        <Toolbar
+        <m.Toolbar
+          animate={{ opacity: isShowMenu ? 1 : 0, y: isShowMenu ? 0 : -100 }}
+          transition={{ duration: '0.8', delay: 0.3, ease: 'easeOut' }}
           style={{
             boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.05)',
             padding: ' 2% 10% 3% 10%',
@@ -242,8 +271,9 @@ export default function DashboardHeaderV2({
               </Button>
             </div>
           </Stack>
-        </Toolbar>
-      ) : null}
+        </m.Toolbar>
+      ) : // </m.div>
+      null}
     </RootStyle>
   );
 }
