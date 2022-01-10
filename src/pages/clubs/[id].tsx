@@ -19,6 +19,12 @@ import Iconify from 'src/components/Iconify';
 
 // sections
 
+import Receipts from 'src/components/dashbaord/account/receipts';
+import Notifications from 'src/components/dashbaord/account//notifications';
+import SocialLinks from 'src/components/dashbaord/account//socialLinks';
+import ChangePassword from '../../components/dashbaord/account/changePassword';
+import General from 'src/components/dashbaord/account//general';
+
 import { ProfileCover, ProfileGallery } from 'src/sections/@dashboard/user/profile';
 import { ChatSidebar, ChatWindow } from 'src/sections/@dashboard/chat';
 import { getConversations, getContacts } from 'src/redux/slices/chat';
@@ -29,6 +35,7 @@ import News from 'src/components/dashbaord/tabs/news';
 import Media from 'src/components/dashbaord/tabs/media';
 import Followers from 'src/components/dashbaord/tabs/followers';
 import AboutUser from 'src/components/dashbaord/tabs/about';
+import ClubGeneral from 'src/components/dashbaord/account/club-general';
 
 // ----------------------------------------------------------------------
 
@@ -60,7 +67,7 @@ export default function UserProfile() {
   const { themeStretch } = useSettings();
   const { user } = useAuth();
 
-  const [currentTab, setCurrentTab] = useState('About');
+  const [currentTab, setCurrentTab] = useState('general');
   const [findFriends, setFindFriends] = useState('');
 
   const handleChangeTab = (newValue: string) => {
@@ -71,46 +78,38 @@ export default function UserProfile() {
     setFindFriends(value);
   };
 
-  const PROFILE_TABS = [
+  const CLUB_TABS = [
     {
-      value: 'About',
-      icon: <Iconify icon={'fa-solid:info-circle'} width={20} height={20} />,
-      component: <AboutUser myProfile={_userAbout} posts={_userFeeds} />,
+      value: 'general',
+      icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
+      component: <ClubGeneral />,
     },
     {
-      value: 'Events',
-      icon: <Iconify icon={'bi:calendar-event-fill'} width={20} height={20} />,
-      component: <EventList />,
-    },
-    {
-      value: 'News',
-      icon: <Iconify icon={'ion:newspaper-sharp'} width={20} height={20} />,
-      component: <News isSelf={true} myProfile={_userAbout} posts={_userFeeds} />,
-    },
-    {
-      value: 'Media',
-      icon: <Iconify icon={'foundation:photo'} width={20} height={20} />,
-      component: <Media isSelf={true} gallery={_userGallery} />,
-    },
-    {
-      value: 'Discussion',
-      icon: <Iconify icon={'healthicons:group-discussion-meetingx3'} width={20} height={20} />,
+      value: 'Receipts $ Documents',
+      icon: <Iconify icon={'ic:round-receipt'} width={20} height={20} />,
       component: (
-        <Card sx={{ height: '72vh', display: 'flex' }}>
-          <ChatSidebar />
-          <ChatWindow />
-        </Card>
+        // <AccountBilling
+        //   cards={_userPayment}
+        //   addressBook={_userAddressBook}
+        //   invoices={_userInvoices}
+        // />
+        <Receipts />
       ),
     },
     {
-      value: 'Members',
-      icon: <Iconify icon={'mdi:account-group'} width={20} height={20} />,
-      component: <Followers followers={_userFollowers} />,
+      value: 'notifications',
+      icon: <Iconify icon={'eva:bell-fill'} width={20} height={20} />,
+      component: <Notifications />,
     },
     {
-      value: 'More',
-      icon: <Iconify icon={'octicon:kebab-horizontal-16'} width={20} height={20} />,
-      component: <ProfileGallery gallery={_userGallery} />,
+      value: 'social_links',
+      icon: <Iconify icon={'eva:share-fill'} width={20} height={20} />,
+      component: <SocialLinks myProfile={_userAbout} />,
+    },
+    {
+      value: 'change_password',
+      icon: <Iconify icon={'ic:round-vpn-key'} width={20} height={20} />,
+      component: <ChangePassword />,
     },
   ];
 
@@ -140,7 +139,7 @@ export default function UserProfile() {
               allowScrollButtonsMobile
               onChange={(e, value) => handleChangeTab(value)}
             >
-              {PROFILE_TABS.map((tab) => (
+              {CLUB_TABS.map((tab) => (
                 <Tab
                   disableRipple
                   key={tab.value}
@@ -153,7 +152,7 @@ export default function UserProfile() {
           </TabsWrapperStyle>
         </Card>
 
-        {PROFILE_TABS.map((tab) => {
+        {CLUB_TABS.map((tab) => {
           const isMatched = tab.value === currentTab;
           return isMatched && <Box key={tab.value}>{tab.component}</Box>;
         })}

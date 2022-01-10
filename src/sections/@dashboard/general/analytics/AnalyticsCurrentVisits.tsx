@@ -42,7 +42,7 @@ export default function AnalyticsCurrentVisits() {
       theme.palette.chart.violet[0],
       theme.palette.chart.yellow[0],
     ],
-    labels: ['America', 'Asia', 'Europe', 'Africa'],
+    labels: ['Going', 'Not Going', 'Confirm', 'NA'],
     stroke: { colors: [theme.palette.background.paper] },
     legend: { floating: true, horizontalAlign: 'center' },
     dataLabels: { enabled: true, dropShadow: { enabled: false } },
@@ -62,7 +62,7 @@ export default function AnalyticsCurrentVisits() {
 
   return (
     <Card>
-      <CardHeader title="Current Visits" />
+      <CardHeader title="Statistics" />
       <ChartWrapperStyle dir="ltr">
         <ReactApexChart type="pie" series={CHART_DATA} options={chartOptions} height={280} />
       </ChartWrapperStyle>
