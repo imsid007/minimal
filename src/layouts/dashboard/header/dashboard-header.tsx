@@ -95,7 +95,7 @@ export default function DashboardHeaderV2({
 
   function handleScroll() {
     let scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollY < 250) setIsShowMenu(true);
+    if (scrollY < 150) setIsShowMenu(true);
     else {
       if (scrollY > lastScrollTop) {
         setIsShowMenu(false);

@@ -22,6 +22,7 @@ import CreateRoleDrawer from '../siders/create-role';
 const about = [1, 2, 3];
 export default function AboutUser() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isFollow, setIsFollow] = useState(false);
 
   const contact = [
     {
@@ -78,12 +79,14 @@ export default function AboutUser() {
       <Card style={{ padding: ' 20px', marginBottom: '20px' }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Button
-            variant="contained"
+            variant={isFollow ? 'outlined' : 'contained'}
             target="_blank"
             rel="noopener"
-            href="https://material-ui.com/store/items/minimal-dashboard/"
+            onClick={() => {
+              setIsFollow(!isFollow);
+            }}
           >
-            Follow
+            {isFollow ? 'Following' : 'Follow'}
           </Button>
           <div>
             <Stack direction="row" justifyContent="space-between" alignItems="center">
